@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 int main() {
-   char Str[125];
+   // Deklarasi variabel
+   char nama[125];
    int persentaseJ, persentaseP, jmlhJamKerja, gaji1, gaji2, gaji3;
    int SMA = 1;
    int D3 = 2;
@@ -9,7 +10,7 @@ int main() {
 
    printf ("PROGRAM HINTUNG GAJI KARYAWAN\n\n");
    printf ("Nama karyawan: ");
-   scanf("%[^\n]", Str);
+   scanf("%[^\n]", nama);
    printf("Golongan Jabatan: ");
    scanf("%d", &persentaseJ);
    printf ("Pendidikan: ");
@@ -17,43 +18,38 @@ int main() {
    printf ("Jumlah jam kerja: ");
    scanf("%d", &jmlhJamKerja);
 
-   if ( persentaseJ == 1 )
-   {
+   // Nama Karyawab
+   printf("Nama Karyawan: %s\n", nama);
+   if ( persentaseJ == 1 ) {
       gaji1 = (2000000 * 00.5);
-   }
-   else if ( persentaseJ == 2 )
-   {
+   } else if ( persentaseJ == 2 ) {
       gaji1 = (2000000 * 0.1);
-   }
-   else if ( persentaseJ == 3 )
-   {
+   } else if ( persentaseJ == 3 ) {
       gaji1 = (2000000 * 0.15);
    }
-   printf("    Tunjangan Jabatan: Rp.%d\n", gaji1);
+   printf("    Tunjangan Jabatan: Rp. %d\n", gaji1);
 
+   // Tunjagnan pendidikan
    if ( persentaseP == SMA) {
       gaji2 = (2000000 * 00.25);
-   }
-   else if ( persentaseP == D3) {
+   } else if ( persentaseP == D3) {
       gaji2 = (2000000 * 00.5);
-   }
-   else if ( persentaseP == S1) {
+   } else if ( persentaseP == S1) {
       gaji2 = (2000000 * 0.1);
    }
-   printf ("    Tunjangan Pendidikan: RP.%d\n", gaji2);
+   printf ("    Tunjangan Pendidikan: RP. %d\n", gaji2);
 
-   if( jmlhJamKerja == 8)
-   {
+   // Hitung lama lembur
+   if( jmlhJamKerja == 8) {
       gaji3 = (2000000 * 1);
+   } else if( jmlhJamKerja < 8) {
+      gaji3 = (2000000 - ((8 - jmlhJamKerja) * 3000));
+   } else if( jmlhJamKerja > 8) {
+      gaji3 = (20000000 + ((jmlhJamKerja - 8) * 3000));
    }
-   else if( jmlhJamKerja > 8 )
-   {
-      gaji3 = (20000000 + ((jumlhJamKerja - 8) * 3000);
-   }
-
    printf ("    Honor Lembur: Rp.%d\n", gaji3);
-
-
+   // Total gaji
+   printf("Total Gaji: Rp. %d\n", (gaji1 + gaji2 + gaji3));
    return 0;
 }
 
