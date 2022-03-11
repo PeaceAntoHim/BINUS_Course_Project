@@ -1,11 +1,13 @@
 #include <stdio.h>
-#include <string.h>
 
 int main() {
-   char Str[500], gaji1, gaji2, gaji3;
-   int persentaseJ, persentaseP, jmlhJamKerja;
-   
-   printf ("PROGRAM HINTUNG GAJI KARYAWAN\n");
+   char Str[125];
+   int persentaseJ, persentaseP, jmlhJamKerja, gaji1, gaji2, gaji3;
+   int SMA = 1;
+   int D3 = 2;
+   int S1 = 3;
+
+   printf ("PROGRAM HINTUNG GAJI KARYAWAN\n\n");
    printf ("Nama karyawan: ");
    scanf("%[^\n]", Str);
    printf("Golongan Jabatan: ");
@@ -17,50 +19,41 @@ int main() {
 
    if ( persentaseJ == 1 )
    {
-      gaji1 = 2000000 * 5%
+      gaji1 = (2000000 * 00.5);
    }
    else if ( persentaseJ == 2 )
    {
-      gaji1 = 2000000 * 10%
+      gaji1 = (2000000 * 0.1);
    }
    else if ( persentaseJ == 3 )
    {
-      gaji1 = 2000000 * 15%
+      gaji1 = (2000000 * 0.15);
    }
-   printf("    Tunjangan Jabatan: %d\n", gaji1);
+   printf("    Tunjangan Jabatan: Rp.%d\n", gaji1);
 
-   // if ( persentaseP == SMA) {
-   //    gaji2 = (2000000 * 2.5%);
-   // }
-   // else if ( persentaseP == D3) {
-   //    gaji2 = (2000000 * 5%);
-   // }
-   // else if ( persentaseP == S1) {
-   //    gaji2 = (2000000 * 10%);
-   // }
-   // printf ("    Tunjangan Pendidikan: %d\n", gaji2);
+   if ( persentaseP == SMA) {
+      gaji2 = (2000000 * 00.25);
+   }
+   else if ( persentaseP == D3) {
+      gaji2 = (2000000 * 00.5);
+   }
+   else if ( persentaseP == S1) {
+      gaji2 = (2000000 * 0.1);
+   }
+   printf ("    Tunjangan Pendidikan: RP.%d\n", gaji2);
 
-   // if( jmlhJamKerja > 8)
-   // {
-   //    gaji3 = (20000 * &jmlhJamKerja);
-   // }
-   // else
-   // {
-   //    gaji3 = (20000 * 8);
-   // }
-   // printf ("    Honor Lembur: %d\n", gaji3);
+   if( jmlhJamKerja == 8)
+   {
+      gaji3 = (2000000 * 1);
+   }
+   else if( jmlhJamKerja > 8 )
+   {
+      gaji3 = (20000000 + ((jumlhJamKerja - 8) * 3000);
+   }
+
+   printf ("    Honor Lembur: Rp.%d\n", gaji3);
+
+
+   return 0;
 }
 
-   // switch(kerja) {
-   //    case 'namaKaryawan'
-   //    {
-   //       if (jmlhJamKerja <= 40) {
-   //          printf("Gaji karyawan = %d\n", Persentase * jmlhJamKerja);
-   //       }
-   //       else {
-   //          printf("Gaji karyawan = %d\n", Persentase * 40 + (jmlhJamKerja - 40) * Persentase * 1.5);
-   //       }
-   //       break;
-   //    }
-   // }
-   // scanf("%d", &jmlhJamKerja);
