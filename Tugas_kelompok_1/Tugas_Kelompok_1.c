@@ -14,7 +14,7 @@ int main() {
    }
    
 
-   printf("Masukan Angka genap =  "); scanf("%d", &genap);
+   printf("Masukan Angka genap = "); scanf("%d", &genap);
 
    if (genap % 2 == 0) {
       printf("%d\n", genap);
