@@ -9,15 +9,18 @@ struct mhs {
 };
 
 int main () {
-   struct mhs info;
+   struct mhs info; 
    float wgpa;
 
-   scanf("Masukan Nim anda = $s\n", &info.nim);
+   printf("Masukan Nim anda = "); scanf("%s", &info.nim);
    fflush(stdin);
-   scanf("Masukan Nama anda = $s\n", &info.nama);
-   scanf("Masukan GPA anda = %f", &wgpa);
+   printf("Masukan Nama anda = "); scanf("%s", &info.nama);
+   printf("Masukan GPA anda = "); scanf("%f", &wgpa);
    info.gpa = wgpa;
-   scanf("Masukan Mata Kuliah anda = $s\n", &info.mataKuliah);
-   printf("Tampilan semua data %$ %$ %$ %.2f", info.nim, info.nama, info.gpa, info.mataKuliah);
-   return 1;
+   printf("Masukan Mata Kuliah anda = "); scanf("%s", &info.mataKuliah);
+   printf("Tampilkan Nim = %s\n", info.nim);
+   printf("Tampilkan Nama = %s\n", info.nama);
+   printf("Tampilkan GPA =  %.2f\n", info.gpa);
+   printf("Tampilkan mata kuliah = %s\n", info.mataKuliah);
+   return 0;
 }
