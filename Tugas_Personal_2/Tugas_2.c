@@ -14,9 +14,10 @@ int main () {
 
    scanf("Masukan Nim anda = $s\n", &info.nim);
    fflush(stdin);
-   gets(info.nama);
+   scanf("Masukan Nama anda = $s\n", &info.nama);
    scanf("Masukan GPA anda = %f", &wgpa);
    info.gpa = wgpa;
-   printf("Tampilan semua data %$ %$ %.2f", info.nim, info.nama, info.gpa);
+   scanf("Masukan Mata Kuliah anda = $s\n", &info.mataKuliah);
+   printf("Tampilan semua data %$ %$ %$ %.2f", info.nim, info.nama, info.gpa, info.mataKuliah);
    return 1;
 }
