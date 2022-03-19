@@ -18,7 +18,6 @@ struct nilai {
 	int nilaiUas;
 };
 
-
 int main () {
    struct mhs info; 
    float wgpa;
