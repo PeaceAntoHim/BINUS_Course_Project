@@ -26,14 +26,14 @@ int main () {
    float wgpa;
    
    
-   
 	printf("Plih menu di bawah ini \n Menu 1\n Menu 2\n"); scanf("[^\n]", Menu1);
    if (Menu1 = '1') {
       printf("Masukan Nim anda = "); scanf("%[^\n]", &info.nim);
       fflush(stdin);
       printf("Masukan Nama anda = "); scanf("%[^\n]", &info.nama);
       printf("Masukan GPA anda = "); scanf("%f", &wgpa);
-	  info.gpa = wgpa;  
+	  info.gpa = wgpa;
+	  fflush(stdin);  
       printf("Masukan jurusan anda = "); scanf("%[^\n]", &info.jurusan);
    }  
    
