@@ -20,7 +20,13 @@ struct nilai {
 
 int main () {
    struct mhs info; 
+   struct nilai data;
    float wgpa;
+   char Menu1, Menu2, Menu3, Menu4;
+
+
+   
+
 
    printf("Masukan Nim anda = "); scanf("%s", &info.nim);
    fflush(stdin);
