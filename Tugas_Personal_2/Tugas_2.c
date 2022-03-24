@@ -18,7 +18,6 @@ struct nilai {
 	int nilaiUas;
 };
 
-
 int main () {
    struct mhs info; 
    struct nilai data;
@@ -32,7 +31,6 @@ int main () {
 	scanf("%[^\n]", &Menu1);
 	int loop = 1;
 	while(loop) {
-		
 	   if ( strcmp(Menu1, "Menu 1") == 0) {
 	   		fflush(stdin);	
 		    printf("Masukan Nim Anda = "); scanf("%[^\n]", &info.nim);
@@ -42,6 +40,8 @@ int main () {
 			info.gpa = wgpa;
 			fflush(stdin);  
 		    printf("Masukan Jurusan Anda = "); scanf("%[^\n]", &info.jurusan);
+		    goto main();
+			break;
 	    } else if( strcmp(Menu1, "Menu 2") == 0 ) {
 			printf("Masukan Hilai Hadir Anda = "); scanf("%d", &data.nilaiHadir);
 			nilaiHadir = (data.nilaiHadir * 0.1);
@@ -53,7 +53,7 @@ int main () {
 			nilaiForum = (data.nilaiForum * 0.1);
 			printf("Masukan Nilai Uas Anda = "); scanf("%d", &data.nilaiUas);
 			nilaiUas = (data.nilaiUas * 0.5);
-			break;
+			break; 	
 		} else if( strcmp(Menu1, "Menu 3") == 0)  {
 			fflush(stdin);
 			printf("Masukan NIM anda untuk melihat kalkulasi nilai = "); scanf("%[^\n]", &info.nim);
@@ -68,7 +68,7 @@ int main () {
 		} else {
 			printf("Mohon masukan menu dengan benar hanya terdiri dari (Menu 1, Menu 2, Menu 3 dan Menu 4).");
 		}
-   return 0;
+   			break;
 	}
 
    
