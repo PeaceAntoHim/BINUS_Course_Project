@@ -30,8 +30,9 @@ int main () {
    
 	printf("Plih menu di bawah ini \n\n Menu 1 untuk menginput biodata\n Menu 2 untuk menginput nilai\n Menu 3 untuk melihat nilai mahasiswa dan status\n Menu 4 untuk keluar dari program\n\n"); 
 	scanf("%[^\n]", &Menu1);
-	int loop = 1;
-	while(loop) {
+	// int loop = 1;
+	typedef enum { false, true } boolean;
+	while(true) {
 		
 	   if ( strcmp(Menu1, "Menu 1") == 0) {
 	   		fflush(stdin);	
@@ -42,6 +43,7 @@ int main () {
 			info.gpa = wgpa;
 			fflush(stdin);  
 		    printf("Masukan Jurusan Anda = "); scanf("%[^\n]", &info.jurusan);
+			
 	    } else if( strcmp(Menu1, "Menu 2") == 0 ) {
 			printf("Masukan Hilai Hadir Anda = "); scanf("%d", &data.nilaiHadir);
 			nilaiHadir = (data.nilaiHadir * 0.1);
