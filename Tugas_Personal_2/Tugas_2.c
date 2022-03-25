@@ -29,11 +29,10 @@ int main () {
    char szKey1[] = "Menu 1";
    int nilaiHadir, nilaiTugas, nilaiForum, nilaiQuiz, nilaiUas;
 
-   while(!breakLoop){
+   while(!breakLoop) {
 		printf("Plih menu di bawah ini \n\n Menu 1 untuk menginput biodata\n Menu 2 untuk menginput nilai\n Menu 3 untuk melihat nilai mahasiswa dan status\n Menu 4 untuk keluar dari program\n\n"); 
 		scanf("%[^\n]", &Menu1);
 		while(loop) {
-			
 			if ( strcmp(Menu1, "Menu 1") == 0) {
 				fflush(stdin);	
 				printf("Masukan Nim Anda = "); scanf("%[^\n]", &info.nim);
@@ -43,7 +42,7 @@ int main () {
 				info.gpa = wgpa;
 				fflush(stdin);  
 				printf("Masukan Jurusan Anda = "); scanf("%[^\n]", &info.jurusan);
-				
+				break;
 			} else if( strcmp(Menu1, "Menu 2") == 0 ) {
 				printf("Masukan Hilai Hadir Anda = "); scanf("%d", &data.nilaiHadir);
 				nilaiHadir = (data.nilaiHadir * 0.1);
@@ -66,13 +65,14 @@ int main () {
 				break;
 			} else if( strcmp(Menu1, "Menu 4") == 0 ) {
 				printf("Anda sudah keluar dari program. Terima Kasih sudah menggunakan program saya, Semoga membantu");
-				return 0;	
+				breakLoop = 1;	
+				break;
 			} else {
 				printf("Mohon masukan menu dengan benar hanya terdiri dari (Menu 1, Menu 2, Menu 3 dan Menu 4).");
 				breakLoop = 1;
 				break;
 			}
-				break;
-			}
+		break;
 		}
+	}
 }
