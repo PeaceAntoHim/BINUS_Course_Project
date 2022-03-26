@@ -40,7 +40,6 @@ int main () {
 			info.gpa = wgpa;
 			fflush(stdin);  
 		    printf("Masukan Jurusan Anda = "); scanf("%[^\n]", &info.jurusan);
-		    goto main();
 			break;
 	    } else if( strcmp(Menu1, "Menu 2") == 0 ) {
 			printf("Masukan Hilai Hadir Anda = "); scanf("%d", &data.nilaiHadir);
