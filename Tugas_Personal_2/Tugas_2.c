@@ -21,17 +21,17 @@ struct nilai {
 
 int main () {
    	float wgpa;
-	int loop = 1;
+		int loop = 1;
    	char Menu1[10];
    	struct mhs info; 
    	char szInput1[80];
    	struct nilai data;
-	int breakLoop = 0;
+		int breakLoop = 0;
    	char szKey1[] = "Menu 1";
    	int nilaiHadir, nilaiTugas, nilaiForum, nilaiQuiz, nilaiUas;
 
    while(!breakLoop) {
-   		fflush(stdin);
+   	fflush(stdin);
 		printf("\nPilih menu di bawah ini \n\n Menu 1 untuk menginput biodata\n Menu 2 untuk menginput nilai\n Menu 3 untuk melihat nilai mahasiswa dan status\n Menu 4 untuk keluar dari program\n\n"); 
 		scanf("%[^\n]", &Menu1);
 		while(loop) {
@@ -75,3 +75,6 @@ int main () {
 		}
 	}
 }
+
+
+/*
