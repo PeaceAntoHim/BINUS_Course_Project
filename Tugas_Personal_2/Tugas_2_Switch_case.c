@@ -22,7 +22,8 @@ struct nilai {
 int main () {
    struct mhs info; 
    struct nilai data;
-   char Menu[10];
+   char Menu[50];
+   int menu = 0;
    char szKey1[] = "Menu 1";
    char szInput1[80];
    float wgpa;
@@ -31,7 +32,7 @@ int main () {
 	printf("Plih menu di bawah ini \n\n Menu 1 untuk menginput biodata\n Menu 2 untuk menginput nilai\n Menu 3 untuk melihat nilai mahasiswa dan status\n Menu 4 untuk keluar dari program\n\n"); 
 	scanf("%[^\n]", &Menu);
 
-		switch(Menu) {
+		switch(menu) {
 		    case '1' :
 		    {
 		    fflush(stdin);	
