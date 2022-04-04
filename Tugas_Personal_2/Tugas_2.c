@@ -21,12 +21,12 @@ struct nilai {
 
 int main () {
    	float wgpa;
-		int loop = 1;
+	int loop = 1;
    	char Menu1[10];
    	struct mhs info; 
    	char szInput1[80];
    	struct nilai data;
-		int breakLoop = 0;
+	int breakLoop = 0;
    	char szKey1[] = "Menu 1";
    	int nilaiHadir, nilaiTugas, nilaiForum, nilaiQuiz, nilaiUas;
 
@@ -60,7 +60,7 @@ int main () {
 				printf("Masukan NIM anda untuk melihat hasil kalkulasi nilai = "); scanf("%s", &info.nim1, &info.nim2);
 				if(info.nim1 == info.nim2) {
 					printf("Hasil kalkulasi = ");
-					printf("%d", (nilaiHadir + nilaiTugas + nilaiForum + nilaiQuiz + nilaiUas));
+					printf("%d", (nilaiHadir + nilaiTugas + nilaiForum + nilaiQuiz + nilaiUas));	
 				} else {
 					printf("Anda belum menginput data nilai. Mohon input nilai anda terlebih dahulu.\n");
 				}
@@ -75,6 +75,3 @@ int main () {
 		}
 	}
 }
-
-
-/*
