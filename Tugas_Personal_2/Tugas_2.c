@@ -73,7 +73,7 @@ int main () {
 						printf(" NIM = %d", info.nim1);
 						printf("\n Nama = %s", info.nama);
 						printf("\n Mata Kuliah = %s", info.matkul);
-						printf(" Grade B = %d	(Lulus)\n", nilaiTotal);
+						printf("\n Grade B = %d	(Lulus)\n", nilaiTotal);
 					} else if(nilaiTotal >= 70) {
 						printf(" NIM = %d", info.nim1);
 						printf("\n Nama = %s", info.nama);
@@ -90,10 +90,8 @@ int main () {
 						printf(" NIM = %d", info.nim1);
 						printf("\n Nama = %s", info.nama);
 						printf("\n Mata Kuliah = %s", info.matkul);
-						printf("Grade E = %d", nilaiTotal);
+						printf("\n Grade E = %d (Tidak Lulus)\n", nilaiTotal);
 					}
-				} else if(0) {
-					printf("Anda belum menginput data nilai. Mohon input nilai anda terlebih dahulu.\n\n");
 				} else {
 					printf("\nNim yang anda masukan salah mohon di cek kembali\n\n");
 				}
