@@ -29,12 +29,15 @@ int main () {
 	int breakLoop = 0;
    	char szKey1[] = "Menu 1";
    	int nilaiHadir, nilaiTugas, nilaiForum, nilaiQuiz, nilaiUas, nilaiTotal;
-
+	
+	// Perulagan untuk infinite kecuali memilih menu 4
    while(!breakLoop) {
    	fflush(stdin);
 		printf("\nPilih menu di bawah ini \n\n Menu 1 untuk menginput biodata\n Menu 2 untuk menginput nilai\n Menu 3 untuk melihat nilai mahasiswa dan status\n Menu 4 untuk keluar dari program\n\n"); 
 		scanf("%[^\n]", &Menu1);
+		//Perulangan setiap menu
 		while(loop) {
+				//Logic memilih menu
 				if ( strcmp(Menu1, "Menu 1") == 0) {
 				fflush(stdin);	
 				printf("Masukan Nim Anda = "); scanf("%d", &info.nim1);
@@ -64,11 +67,12 @@ int main () {
 				//printf("%d", nilaiTotal);
 				if(info.nim1 == info.nim2) {
 					printf("\nHasil kalkulasi\n\n");
+					//Logic menghitung nilai					
 					if(nilaiTotal >= 90) {
 						printf(" NIM = %d", info.nim1);
 						printf("\n Nama = %s", info.nama);
 						printf("\n Mata Kuliah = %s", info.matkul);
-						printf("\n Grade A = %d	(Lulus\n", nilaiTotal);	
+						printf("\n Grade A = %d	(Lulus)\n", nilaiTotal);	
 					} else if(nilaiTotal >= 80) {
 						printf(" NIM = %d", info.nim1);
 						printf("\n Nama = %s", info.nama);
