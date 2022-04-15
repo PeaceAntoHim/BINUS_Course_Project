@@ -26,7 +26,7 @@ int main () {
    	struct mhs info; 
    	char szInput1[80];
    	struct nilai data;
-	int breakLoop = 0;
+		int breakLoop = 0;
    	char szKey1[] = "Menu 1";
    	int nilaiHadir, nilaiTugas, nilaiForum, nilaiQuiz, nilaiUas, nilaiTotal;
 	
