@@ -3,8 +3,8 @@
 
 //Struktur data inputan biodata mahasiswa
 struct mhs {
-   int nim1;
-   int nim2;
+   char nim1[11];
+   char nim2[11];
    char nama[50];
    char matkul[50];
    //float gpa;
@@ -26,7 +26,7 @@ int main () {
    	struct mhs info; 
    	char szInput1[80];
    	struct nilai data;
-		int breakLoop = 0;
+	int breakLoop = 0;
    	char szKey1[] = "Menu 1";
    	int nilaiHadir, nilaiTugas, nilaiForum, nilaiQuiz, nilaiUas, nilaiTotal;
 	
@@ -40,7 +40,7 @@ int main () {
 				//Logic memilih menu
 				if ( strcmp(Menu1, "Menu 1") == 0) {
 				fflush(stdin);	
-				printf("Masukan Nim Anda = "); scanf("%d", &info.nim1);
+				printf("Masukan Nim Anda = "); scanf("%s", &info.nim1);
 				fflush(stdin);
 				printf("Masukan Nama Anda = "); scanf("%[^\n]", &info.nama);
 				//printf("Masukan GPA Anda = "); scanf("%f", &wgpa);
@@ -61,37 +61,37 @@ int main () {
 					nilaiTotal = nilaiHadir + nilaiTugas + nilaiForum + nilaiQuiz + nilaiUas;
 			} else if( strcmp(Menu1, "Menu 3") == 0)  {
 				fflush(stdin);
-				printf("Masukan NIM anda untuk melihat hasil kalkulasi nilai = "); scanf("%d", &info.nim2);
+				printf("Masukan NIM anda untuk melihat hasil kalkulasi nilai = "); scanf("%s", &info.nim2);
 				//printf("ini nim %d \n", info.nim1);
 				//printf("ini nim %d", info.nim2);
 				//printf("%d", nilaiTotal);
-				if(info.nim1 == info.nim2) {
+				if(strcmp(info.nim1, info.nim2) == 0) {
 					printf("\nHasil kalkulasi\n\n");
 					//Logic menghitung nilai					
 					if(nilaiTotal >= 90) {
-						printf(" NIM = %d", info.nim1);
+						printf(" NIM = %s", info.nim1);
 						printf("\n Nama = %s", info.nama);
 						printf("\n Mata Kuliah = %s", info.matkul);
 						printf("\n Grade A = %d	(Lulus)\n", nilaiTotal);	
 					} else if(nilaiTotal >= 80) {
-						printf(" NIM = %d", info.nim1);
+						printf(" NIM = %s", info.nim1);
 						printf("\n Nama = %s", info.nama);
 						printf("\n Mata Kuliah = %s", info.matkul);
 						printf("\n Grade B = %d	(Lulus)\n", nilaiTotal);
 					} else if(nilaiTotal >= 70) {
-						printf(" NIM = %d", info.nim1);
+						printf(" NIM = %s", info.nim1);
 						printf("\n Nama = %s", info.nama);
 						printf("\n Mata Kuliah = %s", info.matkul);
 						printf("\n Grade C = %d	(Lulus)\n", nilaiTotal);
 					} else if(nilaiTotal >= 60) {
-						printf(" NIM = %d", info.nim1);
+						printf(" NIM = %s", info.nim1);
 						printf("\n Nama = %s", info.nama);
 						printf("\n Mata Kuliah = %s", info.matkul);
 						printf("\n Grade D = %d	(Tidak Lulus)\n", nilaiTotal);
 					} else if(nilaiTotal == 1) {
 						printf("Anda Belum Menginput Nilai, Mohon Input Nilai di Menu 2 Terlebih Dahulu\n");
 					} else {
-						printf(" NIM = %d", info.nim1);
+						printf(" NIM = %s", info.nim1);
 						printf("\n Nama = %s", info.nama);
 						printf("\n Mata Kuliah = %s", info.matkul);
 						printf("\n Grade E = %d (Tidak Lulus)\n", nilaiTotal);
