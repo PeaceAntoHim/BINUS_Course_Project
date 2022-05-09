@@ -4,7 +4,7 @@
 int main() {
     FILE *in;
     in = fopen("sumber.txt", "r");
-    char text[250];
+    char kalimat[250];
     char vokal[] = "aiueoAUIEO";
     
     if(!in) {
@@ -15,17 +15,20 @@ int main() {
     
     while(!feof(in)) {
         fscanf(in, "%[^\n]\n", text);
-        puts(text);
+        puts(kalimat);
         
-          for(int i = 0; i < strlen(text); i++){
-            for(int j = 0; j < 10; j++){
-                if(text[i] == vokal[j]){
-                    text[i] = "";
-                }
+        for(int k=0; k<strlen(kalimat); ++k) {
+        hasil[k] = kalimat[k];
+        for(int h=0; h<strlen(hVokal); ++h) {
+            if(kalimat[k] == hVokal[h]) {
+                hasil[k]= ' ';
+                break;
             }
+        } 
         }
+    
         
-        puts(text);
+        puts(kalimat);
     }
  return 0;   
 }
