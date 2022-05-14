@@ -1,13 +1,28 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#define max 100
 
-	struct viewHistory {
-		char namaMinuman[10];
-		char size[10];
-		char penyajian[10];
-		int harga;
-	};
+struct viewHistory {
+	char *namaMinuman;
+	char *size;
+	char *penyajian;
+	int harga;
+};
+	
+int bandingInputan(char *inputan, char *namaMinuman[]) {
+	int j;
+	for(j = 0; j < 10; j++) {
+		printf("test inputan %s", inputan);
+		printf("nama minuman %s", namaMinuman[j]);
+		if(strcmp(inputan, namaMinuman[j]) == 0) {
+			return 1;
+		} else {
+			printf("salah");
+			continue;
+		}
+	}
+}
 
 	
 int main () {
@@ -18,21 +33,31 @@ int main () {
 	char *size[10];
 	char *penyajian[10];
 	int i;
+	int inputan;
+	int loop = 1;
+	struct viewHistory minuman[max];
+	
 	FILE *fRead;
 	fRead = fopen(dataMinuman, "r");
 		// This  loop for nama Minuman
-		for (i = 0; i < 10; i++) {
-			namaMinuman[i] = calloc(20, sizeof(char));	
-		}
+			for (i = 0; i < 10; i++) {
+				namaMinuman[i] = calloc(20, sizeof(char));	
+			}
 		// This loop for size
-		for (i = 0; i < 10; i++) {
-			size[i] = calloc(20, sizeof(char));	
-		}
+			for (i = 0; i < 10; i++) {
+				size[i] = calloc(20, sizeof(char));	
+			}
 		// This Loop for penyajian
 			for (i = 0; i < 10; i++) {
 			penyajian[i] = calloc(20, sizeof(char));	
-		}
-
+			}
+		// This Loop for minuman
+			for (i = 0; i < max; i++) {
+				minuman[i].namaMinuman = calloc(20, sizeof(char));
+				minuman[i].size = calloc(20, sizeof(char));
+				minuman[i].penyajian = calloc(20, sizeof(char));
+			}
+		
 	
 	if(!fRead) {
 		perror("File not found");
@@ -44,7 +69,6 @@ int main () {
 		fscanf(fRead, "%[^\n]\n", data);
 		char *temp;
 		temp = strtok(data, ":");
-		puts(temp);
 			if(strcmp(temp, "namaMinuman") == 0) {
 				char *temp2 ;
 				temp2 = strtok(NULL, ",");
@@ -87,11 +111,35 @@ int main () {
 						}
 					}
 				}
+			}continue;
+		}
+		
+		while(loop) {
+			printf("Pilih Menu di bawah ini : \n");
+			printf("	1. Input data\n");
+			printf("	2. View History\n");
+			printf("	3. Delete History\n");
+			printf("	4. Exit\n");
+			scanf("%d", &inputan);
+			
+			if(inputan == 1) {
+				getchar();
+				for (i = 0; i < max; i++) {
+					if(strcmp(minuman[i].namaMinuman, "") == 0) {
+						printf("Masukan Nama Minuman : \n");
+						fgets(minuman[i].namaMinuman, 20, stdin);
+							if(bandingInputan(minuman[i].namaMinuman, namaMinuman)) {
+								printf("benar");
+							}
+						printf("Masukan Size Minuman : \n");
+						fgets(minuman[i].size, 20, stdin);
+						printf("Masukan Cara Penyajian : \n");
+						fgets(minuman[i].penyajian, 20, stdin);
+						break;
+					}
+				}
 			}
-			continue;
-	
-	
-			puts(data);
+		
 		}
 		
 		
