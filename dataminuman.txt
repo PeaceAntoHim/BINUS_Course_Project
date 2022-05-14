@@ -1,0 +1,4 @@
+namaMinuman:Kopi,Teh,Coklat,Soda
+size:Small,Medium,Largest
+penyajian:Dingin,Panas,Hangat
+harga
