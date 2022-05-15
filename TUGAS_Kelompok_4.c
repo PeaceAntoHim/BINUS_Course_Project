@@ -9,19 +9,36 @@ struct viewHistory {
 	char *penyajian;
 	int harga;
 };
-	
+
+char* chop(char *string)
+{
+	int i, len;
+	len = strlen(string);
+	char *newstring;
+
+	newstring = (char *)malloc(len-1);
+
+
+	for(i = 0; i < strlen(string)-1; i++)
+	{
+		newstring[i] = string[i]; 
+	}
+	return newstring;
+}
+
 int bandingInputan(char *inputan, char *namaMinuman[]) {
+	inputan = chop(inputan);
 	int j;
 	for(j = 0; j < 10; j++) {
-		printf("test inputan %s", inputan);
-		printf("nama minuman %s", namaMinuman[j]);
 		if(strcmp(inputan, namaMinuman[j]) == 0) {
+			printf("inputan benar.\n");
 			return 1;
 		} else {
-			printf("salah");
 			continue;
 		}
 	}
+	printf("inputan salah\n");
+	return 0;
 }
 
 	
@@ -128,8 +145,7 @@ int main () {
 					if(strcmp(minuman[i].namaMinuman, "") == 0) {
 						printf("Masukan Nama Minuman : \n");
 						fgets(minuman[i].namaMinuman, 20, stdin);
-							if(bandingInputan(minuman[i].namaMinuman, namaMinuman)) {
-								printf("benar");
+							if(!bandingInputan(minuman[i].namaMinuman, namaMinuman)) {break;
 							}
 						printf("Masukan Size Minuman : \n");
 						fgets(minuman[i].size, 20, stdin);
