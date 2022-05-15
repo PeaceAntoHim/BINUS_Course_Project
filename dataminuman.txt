@@ -2,3 +2,8 @@ namaMinuman:Kopi,Teh,Coklat,Soda
 size:Small,Medium,Largest
 penyajian:Dingin,Panas,Hangat
 harga
+
+Data Minuman
+No.	 nama	 size	 penyajian	 harga
+ 1	 Kopi	 Small	 Dingin		Rp.12000
+2	 Teh	 Medium	 Dingin		Rp.10800

@@ -2,25 +2,29 @@
 #include <string.h>
 #include <stdlib.h>
 #define max 100
+#include <conio.h>
+#include <ctype.h>
 
+/* 	Tugas Kelompok_5, Tugas ke-4
+	Nama: Frans Sebastian Nim: 2502121162
+	Nama: Gilang Hansangita Nim: 2502124403
+	Nama: Denny Chrisnanda Nim: 2502124914
+*/
 struct viewHistory {
-	char *namaMinuman;
-	char *size;
-	char *penyajian;
+	char namaMinuman[20];
+	char size[20];
+	char penyajian[20];
 	int harga;
 };
 
-char* chop(char *string)
-{
+char* chop(char *string) {
 	int i, len;
 	len = strlen(string);
 	char *newstring;
 
 	newstring = (char *)malloc(len-1);
 
-
-	for(i = 0; i < strlen(string)-1; i++)
-	{
+	for(i = 0; i < strlen(string)-1; i++) {
 		newstring[i] = string[i]; 
 	}
 	return newstring;
@@ -53,7 +57,12 @@ int main () {
 	int inputan;
 	int loop = 1;
 	char choice;
-	struct viewHistory minuman[max];
+	static struct viewHistory minuman[max];
+	char tempNama[20];
+	char tempSize[20];
+	char tempPenyajian[20];
+	int tempHarga;
+	int indexDelete;
 	
 	FILE *fRead;
 	fRead = fopen(dataMinuman, "r");
@@ -67,16 +76,9 @@ int main () {
 			}
 		// This Loop for penyajian
 			for (i = 0; i < 10; i++) {
-			penyajian[i] = calloc(20, sizeof(char));	
+				penyajian[i] = calloc(20, sizeof(char));	
 			}
-		// This Loop for minuman
-			for (i = 0; i < max; i++) {
-				minuman[i].namaMinuman = calloc(20, sizeof(char));
-				minuman[i].size = calloc(20, sizeof(char));
-				minuman[i].penyajian = calloc(20, sizeof(char));
-			}
-		
-	
+
 	if(!fRead) {
 		perror("File not found");
 		getchar();
@@ -95,7 +97,7 @@ int main () {
 						if(strcmp(namaMinuman[i], "") != 0) continue;
 						else {
 							strcpy(namaMinuman[i], temp2);
-					 		puts(namaMinuman[i]); 
+					 		//puts(namaMinuman[i]); 
 					 		temp2 = strtok(NULL, ",");
 							i = 10;
 						}
@@ -109,7 +111,7 @@ int main () {
 						if(strcmp(size[i], "") != 0) continue;
 						else {
 							strcpy(size[i], temp2);
-					 		puts(size[i]); 
+					 		//puts(size[i]); 
 					 		temp2 = strtok(NULL, ",");
 							i = 10;
 						}
@@ -123,7 +125,7 @@ int main () {
 						if(strcmp(penyajian[i], "") != 0) continue;
 						else {
 							strcpy(penyajian[i], temp2);
-					 		puts(penyajian[i]); 
+					 		//puts(penyajian[i]); 
 					 		temp2 = strtok(NULL, ",");
 							i = 10;
 						}
@@ -143,50 +145,89 @@ int main () {
 			// Step 1 input data
 			getchar();
 			if(inputan == 1) {
-				for (i = 0; i < max; i++) {
+				system("cls");
+				//printf("inputan %d\n", inputan);
+				for (i = 1; i < max; i++) {
+					//printf("%d\n", i);
 					if(strcmp(minuman[i].namaMinuman, "") == 0) {
 						printf("Masukan Nama Minuman : \n");
-						fgets(minuman[i].namaMinuman, 20, stdin);
-							printf("in di bawah namaMinuman %s",  minuman[i].namaMinuman);
-							if(!bandingInputan(minuman[i].namaMinuman, namaMinuman)) break;
+						fgets(tempNama, 20, stdin);          
+						if(!bandingInputan(tempNama, namaMinuman)) break;
 						printf("Masukan Size Minuman : \n");
-						fgets(minuman[i].size, 20, stdin);
-							if(!bandingInputan(minuman[i].size, size)) break;
+						fgets(tempSize, 20, stdin);
+						if(!bandingInputan(tempSize, size)) break;
 						printf("Masukan Cara Penyajian : \n");
-						fgets(minuman[i].penyajian, 20, stdin);
-							if(!bandingInputan(minuman[i].penyajian, penyajian)) break;
-						minuman[i].harga = (strlen(minuman[i].size) - 1)* (strlen(minuman[i].namaMinuman) - 1)* (strlen(minuman[i].penyajian) - 1) * 100;
-						printf("\nNama Minuman : %s", minuman[i].namaMinuman);
-						printf("Size : %s", minuman[i].size);
-						printf("Penyajian : %s", minuman[i].penyajian);
-						printf("Harga : Rp.%d\n\n", minuman[i].harga);
-					// This for confirm data input
-					printf("Konfirmasi apakah yang anda pilih benar yes(y)/no(n)? \n");
-					choice = getchar();
-						if ( choice == 'n' || choice == 'N' ) {
-							minuman[i].namaMinuman = "";
-							minuman[i].size = "";
-							minuman[i].penyajian = "";
-							minuman[i].harga = 0;
-							printf("\nData tidak berhasil di masukan\n\n");
+						fgets(tempPenyajian, 20, stdin);
+						if(!bandingInputan(tempPenyajian, penyajian)) break;
+						tempHarga = (strlen(tempNama) - 1)* (strlen(tempSize) - 1)* (strlen(tempPenyajian) - 1) * 100;
+						printf("\nNama Minuman : %s", tempNama);
+						printf("Size : %s", tempSize);
+						printf("Penyajian : %s", tempPenyajian);
+						printf("Harga : Rp.%d\n\n", tempHarga);
+						
+						// This for confirm data input
+						printf("Konfirmasi apakah yang anda pilih benar yes(y)/no(n)? \n");
+						scanf("%C", &choice);
+						fflush(stdin);
+						if ( choice =='y' || choice == 'Y'){
+							strcpy(minuman[i].namaMinuman, chop(tempNama));
+							strcpy(minuman[i].size, chop(tempSize));
+							strcpy(minuman[i].penyajian, chop(tempPenyajian));
+							minuman[i].harga = tempHarga;
+							puts("Data berhasil dimasukkan.");
 							break;
-						} else if( choice == 'y' || choice == 'Y' ) {
-							printf("\nBerhasil memasukan data\n\n");
+						}else if(choice =='n' || choice == 'N'){
+							puts("Data tidak berhasil dimasukkan.");
 							break;
-						} else {
-							minuman[i].namaMinuman = "";
-							minuman[i].size = "";
-							minuman[i].penyajian = "";
-							minuman[i].harga = 0;
-							printf("\nAnda salah memasukan data pilihan konfirmasi\n\n");
+						}else{
+							puts("input konfirmasi salah");
 							break;
 						}
-					} 
+					}
+				} 
+			} else if (inputan == 2) {
+				system("cls");
+				printf("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+				printf("No.\t nama\t size\t penyajian\t harga\n ");
+				for (i = 1; i < max; i++) {
+					if(minuman[i].harga != 0) {
+						printf("%d\t %s\t %s\t %s\t\tRp.%i\n", i, minuman[i].namaMinuman, minuman[i].size, minuman[i].penyajian, minuman[i].harga);
+					}
 				}
-			}
-		
+			} else if (inputan == 3) {
+				system("cls");
+				printf("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+				printf("No.\t nama\t size\t penyajian\t harga\n ");
+				for (i = 1; i < max; i++) {
+					if(minuman[i].harga != 0) {
+						printf("%d\t %s\t %s\t %s\t\tRp.%i\n", i, minuman[i].namaMinuman, minuman[i].size, minuman[i].penyajian, minuman[i].harga);
+					}
+				}
+				printf("\nMasukan No index yang mau di hapus: \n\n");
+				scanf("%d", &indexDelete);
+				strcpy(minuman[indexDelete].namaMinuman, "");
+				strcpy(minuman[indexDelete].size, "");
+				strcpy(minuman[indexDelete].penyajian, "");
+				minuman[indexDelete].harga = 0;
+				printf("\nData Successfully delete..\n\n");
+			} else if(inputan == 4) {
+				system("cls");
+				FILE *fWrite;
+				
+				fWrite = fopen(dataMinuman, "a");
+				
+				fprintf(fWrite, "Data Minuman\n");
+				fprintf(fWrite,"No.\t nama\t size\t penyajian\t harga\n ");
+				for (i = 1; i < max; i++) {
+					if(minuman[i].harga != 0) {
+						fprintf(fWrite, "%d\t %s\t %s\t %s\t\tRp.%i\n", i, minuman[i].namaMinuman, minuman[i].size, minuman[i].penyajian, minuman[i].harga);
+					}
+				}
+				
+				fclose(fWrite);
+				break;
+			}	
 		}
-	
+		fclose(fRead);
 	return 0;
-	
 }

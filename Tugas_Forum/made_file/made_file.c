@@ -5,7 +5,8 @@ int main() {
     FILE *in;
     in = fopen("sumber.txt", "r");
     char kalimat[250];
-    char vokal[] = "aiueoAUIEO";
+    char hVokal[] = "aiueoAUIEO";
+    char hasil[250];
     
     if(!in) {
         perror("File not found");
@@ -14,21 +15,21 @@ int main() {
     }
     
     while(!feof(in)) {
-        fscanf(in, "%[^\n]\n", text);
+        fscanf(in, "%[^\n]\n", kalimat);
         puts(kalimat);
         
-        for(int k=0; k<strlen(kalimat); ++k) {
-        hasil[k] = kalimat[k];
-        for(int h=0; h<strlen(hVokal); ++h) {
-            if(kalimat[k] == hVokal[h]) {
-                hasil[k]= ' ';
-                break;
-            }
-        } 
+            for(int k=0; k<strlen(kalimat); ++k) {
+            hasil[k] = kalimat[k];
+            for(int h=0; h<strlen(hVokal); ++h) {
+                if(kalimat[k] == hVokal[h]) {
+                    hasil[k]= ' ';
+                   
+                }
+            } 
         }
-    
-        
-        puts(kalimat);
+        puts(hasil);
     }
+    
+    
  return 0;   
 }
