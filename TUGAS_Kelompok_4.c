@@ -52,6 +52,7 @@ int main () {
 	int i;
 	int inputan;
 	int loop = 1;
+	char choice;
 	struct viewHistory minuman[max];
 	
 	FILE *fRead;
@@ -139,26 +140,52 @@ int main () {
 			printf("	4. Exit\n");
 			scanf("%d", &inputan);
 			
+			// Step 1 input data
+			getchar();
 			if(inputan == 1) {
-				getchar();
 				for (i = 0; i < max; i++) {
 					if(strcmp(minuman[i].namaMinuman, "") == 0) {
 						printf("Masukan Nama Minuman : \n");
 						fgets(minuman[i].namaMinuman, 20, stdin);
-							if(!bandingInputan(minuman[i].namaMinuman, namaMinuman)) {break;
-							}
+							printf("in di bawah namaMinuman %s",  minuman[i].namaMinuman);
+							if(!bandingInputan(minuman[i].namaMinuman, namaMinuman)) break;
 						printf("Masukan Size Minuman : \n");
 						fgets(minuman[i].size, 20, stdin);
+							if(!bandingInputan(minuman[i].size, size)) break;
 						printf("Masukan Cara Penyajian : \n");
 						fgets(minuman[i].penyajian, 20, stdin);
-						break;
-					}
+							if(!bandingInputan(minuman[i].penyajian, penyajian)) break;
+						minuman[i].harga = (strlen(minuman[i].size) - 1)* (strlen(minuman[i].namaMinuman) - 1)* (strlen(minuman[i].penyajian) - 1) * 100;
+						printf("\nNama Minuman : %s", minuman[i].namaMinuman);
+						printf("Size : %s", minuman[i].size);
+						printf("Penyajian : %s", minuman[i].penyajian);
+						printf("Harga : Rp.%d\n\n", minuman[i].harga);
+					// This for confirm data input
+					printf("Konfirmasi apakah yang anda pilih benar yes(y)/no(n)? \n");
+					choice = getchar();
+						if ( choice == 'n' || choice == 'N' ) {
+							minuman[i].namaMinuman = "";
+							minuman[i].size = "";
+							minuman[i].penyajian = "";
+							minuman[i].harga = 0;
+							printf("\nData tidak berhasil di masukan\n\n");
+							break;
+						} else if( choice == 'y' || choice == 'Y' ) {
+							printf("\nBerhasil memasukan data\n\n");
+							break;
+						} else {
+							minuman[i].namaMinuman = "";
+							minuman[i].size = "";
+							minuman[i].penyajian = "";
+							minuman[i].harga = 0;
+							printf("\nAnda salah memasukan data pilihan konfirmasi\n\n");
+							break;
+						}
+					} 
 				}
 			}
 		
 		}
-		
-		
 	
 	return 0;
 	
