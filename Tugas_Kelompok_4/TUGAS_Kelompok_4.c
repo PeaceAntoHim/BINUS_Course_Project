@@ -9,6 +9,7 @@
 	Nama: Frans Sebastian Nim: 2502121162
 	Nama: Gilang Hansangita Nim: 2502124403
 	Nama: Denny Chrisnanda Nim: 2502124914
+	compiler yang digunakan adalah compiler dari onlinegdb
 */
 struct viewHistory {
 	char namaMinuman[20];
@@ -167,7 +168,7 @@ int main () {
 						
 						// This for confirm data input
 						printf("Konfirmasi apakah yang anda pilih benar yes(y)/no(n)? \n");
-						scanf("%C", &choice);
+						scanf("%c", &choice);
 						fflush(stdin);
 						if ( choice =='y' || choice == 'Y'){
 							strcpy(minuman[i].namaMinuman, chop(tempNama));
