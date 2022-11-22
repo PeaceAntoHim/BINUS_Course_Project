@@ -1,6 +1,7 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
@@ -26,5 +27,12 @@ int main()
    printf("pointer2 = %d\n", *pointer);
    printf("pointer2 = %d\n", &pointer2);
 
+   // Created pointer with memory allocation than we used type casting
+   int *p = (int *)malloc(sizeof(int));
+   *p = 30;
+   printf("*p = %d\n", *p);
+   // This will dealocate the memory
+   free(p);
+   // printf("*p = %d\n", *p);
    return 0;
 }
