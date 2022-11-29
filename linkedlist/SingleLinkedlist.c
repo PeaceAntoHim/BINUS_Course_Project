@@ -27,6 +27,22 @@ void pushHead(int x)
    }
 }
 
+void pushTail(int x)
+{
+   sturct Data *node = (struct Data *)malloc(sizeof(struct Data));
+   node->= x;
+   node->next = NULL;
+
+   if (head == NULL)
+   {
+      else
+      {
+         tail->nexr = node;
+         tail = node;
+      }
+   }
+}
+
 void print()
 {
    if (head != NULL)
