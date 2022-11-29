@@ -29,17 +29,18 @@ void pushHead(int x)
 
 void pushTail(int x)
 {
-   sturct Data *node = (struct Data *)malloc(sizeof(struct Data));
-   node->= x;
+   struct Data *node = (struct Data *)malloc(sizeof(struct Data));
+   node->value = x;
    node->next = NULL;
 
    if (head == NULL)
    {
-      else
-      {
-         tail->nexr = node;
-         tail = node;
-      }
+      head = tail = node;
+   }
+   else
+   {
+      tail->next = node;
+      tail = node;
    }
 }
 
@@ -62,11 +63,17 @@ void print()
 
 int main()
 {
-   pushHead(30);
-   pushHead(10);
-   pushHead(40);
-   pushHead(20);
-   pushHead(50);
+   //   pushHead(30);
+   //   pushHead(10);
+   //   pushHead(40);
+   //   pushHead(20);
+   //   pushHead(50);
+
+   pushTail(20);
+   pushTail(10);
+   pushTail(40);
+   pushTail(30);
+   pushTail(50);
 
    print();
 
