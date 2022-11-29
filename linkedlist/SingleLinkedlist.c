@@ -44,6 +44,50 @@ void pushTail(int x)
    }
 }
 
+// Create popHead
+void popHead()
+{
+   if (head != NULL)
+   {
+      if (head == tail)
+      {
+         free(head);
+         head = tail = NULL;
+      }
+      else
+      {
+         struct Data *node = head;
+         head = node->next;
+         free(node);
+         node = NULL;
+      }
+   }
+}
+
+// Created popTail
+void popTail()
+{
+   if (head != NULL)
+   {
+      if (head == tail)
+      {
+         free(head);
+         head = tail = NULL;
+      }
+      else
+      {
+         struct Data *curr = head;
+         while (curr->next != tail)
+         {
+            curr = curr->next;
+         }
+         tail = curr;
+         free(tail->next);
+         tail->next = NULL;
+      }
+   }
+}
+
 void print()
 {
    if (head != NULL)
@@ -74,6 +118,21 @@ int main()
    pushTail(40);
    pushTail(30);
    pushTail(50);
+
+   print();
+   printf("\n");
+
+   popTail();
+   popTail();
+   popTail();
+   popTail();
+   popTail();
+
+   //   popHead();
+   //      popHead();
+   //       popHead();
+   //          popHead();
+   //           popHead();
 
    print();
 
