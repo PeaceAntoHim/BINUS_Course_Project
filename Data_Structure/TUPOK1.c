@@ -56,7 +56,7 @@ void push(char namaBarang[], char jenisBarang[], int jumlahBarang, int hargaBara
       tail->next = curr;
       tail = curr;
    }
-   // tail->next = NULL;
+   tail->next = NULL;
 }
 
 void pop(char namaBarang[])
@@ -191,8 +191,11 @@ int main()
          getchar();
          fflush(stdin);
          break;
+      case 4:
+         popall();
+         break;
       }
-      popall();
+
    } while (choice != 4);
 
    return 0;
