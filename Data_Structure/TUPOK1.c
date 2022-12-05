@@ -41,6 +41,7 @@ void view()
 void push(char namaBarang[], char jenisBarang[], int jumlahBarang, int hargaBarang)
 {
    curr = (struct stokBarang *)malloc(sizeof(struct stokBarang));
+   // struct stokBarang *curr = malloc(sizeof(struct stokBarang));
    strcpy(curr->namaBarang, namaBarang);
    strcpy(curr->jenisBarang, jenisBarang);
    curr->jumlahBarang = jumlahBarang;
@@ -55,7 +56,7 @@ void push(char namaBarang[], char jenisBarang[], int jumlahBarang, int hargaBara
       tail->next = curr;
       tail = curr;
    }
-   tail->next = NULL;
+   // tail->next = NULL;
 }
 
 void pop(char namaBarang[])
