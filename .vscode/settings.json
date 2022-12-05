@@ -22,6 +22,8 @@
    "peacock.color": "#832561",
    "files.associations": {
       "*.ejs": "html",
-      "madeFile3.C": "cpp"
+      "madeFile3.C": "cpp",
+      "string.h": "c",
+      "stdlib.h": "c"
    }
 }

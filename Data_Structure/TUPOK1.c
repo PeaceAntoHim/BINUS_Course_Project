@@ -15,12 +15,12 @@ void view()
 {
    int i = 0, j = 0;
    printf("        --------------------- LIST BARANG -------------- \n\n");
-   for (j = 0; j < 100; j++)
+   for (j = 0; j < 64; j++)
       printf("=");
    printf("\n");
    printf("| %-3s    |   %-20s   |   %-15s   |   %-8s    |   %-8s    |\n",
           "No.", "namaBarang", "jenisBarang", "jumlahBarang", "hargaBarang");
-   for (j = 0; j < 100; j++)
+   for (j = 0; j < 64; j++)
       printf("=");
    printf("\n");
    curr = head;
@@ -31,7 +31,7 @@ void view()
              i, curr->namaBarang, curr->jenisBarang, curr->jumlahBarang, curr->hargaBarang);
       curr = curr->next;
    }
-   for (j = 0; j < 100; j++)
+   for (j = 0; j < 64; j++)
       printf("=");
    printf("\n");
    getchar();
@@ -40,7 +40,7 @@ void view()
 
 void push(char namaBarang[], char jenisBarang[], int jumlahBarang, int hargaBarang)
 {
-   curr = (struct data *)malloc(sizeof(struct stokBarang));
+   curr = (struct stokBarang *)malloc(sizeof(struct stokBarang));
    strcpy(curr->namaBarang, namaBarang);
    strcpy(curr->jenisBarang, jenisBarang);
    curr->jumlahBarang = jumlahBarang;
@@ -115,7 +115,8 @@ void menu()
 
 void clear()
 {
-   for (int i = 0; i < 25; i++)
+   int i = 0;
+   for (i = 0; i < 25; i++)
       printf("\n");
 }
 
@@ -141,31 +142,31 @@ int main()
       case 2:
          do
          {
-            printf(" Masukan nama barang baru [3..20]: ");
+            printf(" Masukan nama barang baru tidak kurang dari 3 atau lebih dari 20 [3..20]: ");
             scanf("%[^\n]", namaBarang);
             fflush(stdin);
          } while (strlen(namaBarang) < 3 || strlen(namaBarang) > 20);
-         printf("%[^\n]", jenisBarang);
-         do
-         {
-            printf(" Masukan jenis barang baru [gula/beras/telur]: ");
-            scanf("^\n", jenisBarang);
-            fflush(stdin);
-         } while (strcmp(jenisBarang, "gula") != 0 && strcmp(jenisBarang, "beras") != 0 && strcmp(jenisBarang, "telur") != 0);
          printf("\n");
          do
          {
-            printf(" Masukan jumlah barang [1..20]: ");
+            printf(" Masukan jenis barang baru sesuai dari 3 ini [pokok/sandang/tersier]: ");
+            scanf("%[^\n]", jenisBarang);
+            fflush(stdin);
+         } while (strcmp(jenisBarang, "pokok") != 0 && strcmp(jenisBarang, "sandang") != 0 && strcmp(jenisBarang, "tersier") != 0);
+         printf("\n");
+         do
+         {
+            printf(" Masukan jumlah barang [tidak kurang dari 1 atau lebih dari 20 [1..20]: ");
             scanf("%d", &jumlahBarang);
             fflush(stdin);
          } while (jumlahBarang < 1 || jumlahBarang >= 20);
          printf("\n");
          do
          {
-            printf(" Masukan harga barang {Rp1000..Rp100000}: Rp.");
+            printf(" Masukan harga barang tidak kurang dari 10000 atau lebih dari 1000000{Rp10000..Rp1000000}: Rp.");
             scanf("%d", &hargaBarang);
             fflush(stdin);
-         } while (hargaBarang < 1000 || hargaBarang > 100000);
+         } while (hargaBarang < 10000 || hargaBarang > 1000000);
          push(namaBarang, jenisBarang, jumlahBarang, hargaBarang);
          printf("\n\n\n ---------- Barang baru berhasil di tambahkan ------------ \n");
          getchar();
@@ -180,7 +181,7 @@ int main()
          {
             do
             {
-               printf(" Masukan nama barang [3..20]: ");
+               printf(" Masukan nama barang tidak kurang dari 3 atau lebih dari 20 [3..20]: ");
                scanf("%[^\n]", namaBarang);
                fflush(stdin);
             } while (strlen(namaBarang) < 3 || strlen(namaBarang) > 20);
