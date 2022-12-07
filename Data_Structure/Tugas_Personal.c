@@ -16,23 +16,23 @@ void view()
 {
    int i = 0, j = 0;
    printf("        --------------------- LIST KARYAWAN -------------- \n\n");
-   for (j = 0; j < 64; j++)
+   for (j = 0; j < 68; j++)
       printf("=");
    printf("\n");
    printf("| %-3s    |    %-6s    |   %-20s   |   %-15s   |   %-8s    |   %-8s    |\n",
           "No.", "ID", "Nama Lengkap", "Tempat Lahir", "Tanggal Lahir", "Jabatan");
-   for (j = 0; j < 64; j++)
+   for (j = 0; j < 68; j++)
       printf("=");
    printf("\n");
    curr = head;
    while (curr)
    {
       i++;
-      printf("| %3d.  |    %6d    |   %-20s   |   %-15s   |   %8d     | Rp%8d     |\n",
+      printf("| %3d.  |    %6d    |   %-20s   |   %-15s   |   %8d     | %-15s     |\n",
              i, curr->id, curr->namaLengkap, curr->tempatLahir, curr->tanggalLahir, curr->jabatan);
       curr = curr->next;
    }
-   for (j = 0; j < 64; j++)
+   for (j = 0; j < 68; j++)
       printf("=");
    printf("\n");
    getchar();
@@ -162,7 +162,7 @@ int main()
             do
             {
                printf(" Masukan tanggal lahir employee. Note: tidak kurang dari angka 1 atau lebih dari angka 31: ");
-               scanf("%d", tanggalLahir);
+               scanf("%d", &tanggalLahir);
                fflush(stdin);
             } while (tanggalLahir < 1 || tanggalLahir > 31);
 
@@ -191,7 +191,7 @@ int main()
             do
             {
                printf(" Masukan id employee untuk menghapus data employee. Note id employee maksimal 5 angka: ");
-               scanf("%d", id);
+               scanf("%d", &id);
                fflush(stdin);
             } while (id <= 5);
             pop(id);
