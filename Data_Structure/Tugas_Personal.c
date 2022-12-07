@@ -59,3 +59,65 @@ void push(int id, char namaLengkap[], char tempatLahir[], int tanggalLahir[], ch
    }
    tail->next = NULL;
 }
+
+void pop(int id)
+{
+   curr = head;
+   while (head != NULL && curr->id, id != 0)
+   {
+      curr = curr->next;
+   }
+
+   if (curr == NULL)
+   {
+      printf("    Id employee yang anda masukan tidak di temukan \n");
+   }
+   else if (head == curr)
+   {
+      head = head->next;
+      free(curr);
+      printf("    Id employee yang anda masukan telah berhasil di hapus \n");
+   }
+   else if (head != curr && tail != curr)
+   {
+      struct DataKaryawan *temp;
+      temp = head;
+      while (temp->next != curr)
+         temp = temp->next;
+      temp->next = curr->next;
+      free(curr);
+      printf("   Id employee yang anda masukan telah berhasil di hapus \n");
+   }
+   else if (tail == curr)
+   {
+      printf("    Id employee yang anda masukan tidak bisa di hapus karena employee terkahir\n");
+   }
+}
+
+void popall()
+{
+   while (head != NULL)
+   {
+      curr = head;
+      head = head->next;
+      free(curr);
+   }
+}
+
+void menu()
+{
+   printf("\n COMPUTER ADMINISTRATOR");
+   printf("\n +++++++++++++++++++++++");
+   printf("\n 1. List Employee");
+   printf("\n 2. Add (PUSH) Data Employee Baru");
+   printf("\n 3. Hapus (POP) Data Employee Lama");
+   printf("\n 4. Keluar Program");
+   printf("\n >> Input Pilihan : ");
+}
+
+void clear()
+{
+   int i = 0;
+   for (i = 0; i < 25; i++)
+      printf("\n");
+}
