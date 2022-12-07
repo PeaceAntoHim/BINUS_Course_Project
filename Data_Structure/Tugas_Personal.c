@@ -121,3 +121,89 @@ void clear()
    for (i = 0; i < 25; i++)
       printf("\n");
 }
+
+int main()
+{
+   int choice;
+   int id;
+   char namaLengkap[50];
+   char tempatLahir[30];
+   int tanggalLahir;
+   char jabatan[21];
+
+   do
+   {
+      clear();
+      menu();
+      scanf("%d", &choice);
+      fflush(stdin);
+      switch (choice)
+      {
+      case 1:
+         view();
+         break;
+      case 2:
+         do
+         {
+            do
+            {
+               printf(" Masukan nama lengkap employee. Note: tidak kurang dari 3 kata atau lebih dari 50 kata[3..50]: ");
+               scanf("%[^\n]", namaLengkap);
+               fflush(stdin);
+            } while (strlen(namaLengkap) < 3 || strlen(namaLengkap) > 50);
+            printf("\n");
+            do
+            {
+               printf(" Masukan tempat lahir employee. Note: tidak kurang dari 3 kata atau lebih dari 30 kata[3..30]:");
+               scanf("%[^\n]", tempatLahir);
+               fflush(stdin);
+            } while (strlen(tempatLahir) < 3 || strlen(tempatLahir) > 30);
+            printf("\n");
+            do
+            {
+               printf(" Masukan tanggal lahir employee. Note: tidak kurang dari angka 1 atau lebih dari angka 31: ");
+               scanf("%d", tanggalLahir);
+               fflush(stdin);
+            } while (tanggalLahir < 1 || tanggalLahir > 31);
+
+            do
+            {
+               printf(" Masukan jabata employee. Note: tidak kurang dari 3 kata atau lebih dari 20 kata[3..20]: ");
+               scanf("%[^\n]", jabatan);
+               fflush(stdin);
+            } while (strlen(jabatan) < 3 || strlen(jabatan) > 20);
+            printf("\n");
+            push(id, namaLengkap, tempatLahir, tanggalLahir, jabatan);
+            printf("\n\n\n ---------- Data Employee baru berhasil di tambahkan ------------ \n");
+            getchar();
+            fflush(stdin);
+            id++;
+            printf("\n");
+         } while (id <= 5);
+         break;
+      case 3:
+         if (head == NULL)
+         {
+            printf(" List data employee kosong...");
+         }
+         else
+         {
+            do
+            {
+               printf(" Masukan id employee untuk menghapus data employee. Note id employee maksimal 5 angka: ");
+               scanf("%d", id);
+               fflush(stdin);
+            } while (id <= 5);
+            pop(id);
+         }
+         getchar();
+         fflush(stdin);
+         break;
+      case 4:
+         popall();
+         break;
+      };
+
+   } while (choice != 4);
+   return 0;
+}
