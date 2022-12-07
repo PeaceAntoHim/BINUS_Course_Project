@@ -5,8 +5,8 @@
 struct DataKaryawan
 {
    int id;
-   char namaLengkap[31];
-   char tempatLahir[16];
+   char namaLengkap[51];
+   char tempatLahir[30];
    int tanggalLahir;
    char jabatan[21];
    struct DataKaryawan *next;
@@ -37,4 +37,25 @@ void view()
    printf("\n");
    getchar();
    fflush(stdin);
+}
+
+void push(int id, char namaLengkap[], char tempatLahir[], int tanggalLahir[], char jabatan[])
+{
+   curr = (struct DataKaryawan *)malloc(sizeof(struct DataKaryawan));
+   curr->id = id;
+   strcpy(curr->namaLengkap, namaLengkap);
+   strcpy(curr->tempatLahir, tempatLahir);
+   curr->tanggalLahir = tanggalLahir;
+   strcpy(curr->jabatan, jabatan);
+
+   if (head == NULL)
+   {
+      head = tail = curr;
+   }
+   else
+   {
+      tail->next = curr;
+      tail = curr;
+   }
+   tail->next = NULL;
 }
