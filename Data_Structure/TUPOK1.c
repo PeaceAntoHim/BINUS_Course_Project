@@ -62,7 +62,7 @@ void push(char namaBarang[], char jenisBarang[], int jumlahBarang, int hargaBara
 void pop(char namaBarang[])
 {
    curr = head;
-   while (curr != NULL && strcmp(curr->namaBarang, namaBarang != 0))
+   while (curr != NULL && strcmp(curr->namaBarang, namaBarang) != 0)
    {
       curr = curr->next;
    }
