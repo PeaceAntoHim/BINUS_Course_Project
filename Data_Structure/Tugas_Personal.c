@@ -62,8 +62,8 @@ void push(char id[], char namaLengkap[], char tempatLahir[], int tanggalLahir[],
 
 void pop(char id[])
 {
-   curr - head;
-   while (curr != NULL && strcmp(curr->id, id != 0))
+   curr = head;
+   while (curr != NULL && strcmp(curr->id, id) != 0)
    {
       curr = curr->next;
    }
