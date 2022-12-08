@@ -4,7 +4,7 @@
 
 struct DataKaryawan
 {
-   int id;
+   char id[5];
    char namaLengkap[51];
    char tempatLahir[30];
    int tanggalLahir;
@@ -16,33 +16,33 @@ void view()
 {
    int i = 0, j = 0;
    printf("        --------------------- LIST KARYAWAN -------------- \n\n");
-   for (j = 0; j < 68; j++)
+   for (j = 0; j < 128; j++)
       printf("=");
    printf("\n");
    printf("| %-3s    |    %-6s    |   %-20s   |   %-15s   |   %-8s    |   %-8s    |\n",
           "No.", "ID", "Nama Lengkap", "Tempat Lahir", "Tanggal Lahir", "Jabatan");
-   for (j = 0; j < 68; j++)
+   for (j = 0; j < 128; j++)
       printf("=");
    printf("\n");
    curr = head;
    while (curr)
    {
       i++;
-      printf("| %3d.  |    %6d    |   %-20s   |   %-15s   |   %8d     | %-15s     |\n",
+      printf("| %3d.  |    %-12s    |   %-20s   |   %-15s   |   %8d     | %-15s     |\n",
              i, curr->id, curr->namaLengkap, curr->tempatLahir, curr->tanggalLahir, curr->jabatan);
       curr = curr->next;
    }
-   for (j = 0; j < 68; j++)
+   for (j = 0; j < 128; j++)
       printf("=");
    printf("\n");
    getchar();
    fflush(stdin);
 }
 
-void push(int id, char namaLengkap[], char tempatLahir[], int tanggalLahir[], char jabatan[])
+void push(char id[], char namaLengkap[], char tempatLahir[], int tanggalLahir[], char jabatan[])
 {
    curr = (struct DataKaryawan *)malloc(sizeof(struct DataKaryawan));
-   curr->id = id;
+   strcpy(curr->id, id);
    strcpy(curr->namaLengkap, namaLengkap);
    strcpy(curr->tempatLahir, tempatLahir);
    curr->tanggalLahir = tanggalLahir;
@@ -60,10 +60,10 @@ void push(int id, char namaLengkap[], char tempatLahir[], int tanggalLahir[], ch
    tail->next = NULL;
 }
 
-void pop(int id)
+void pop(char id[])
 {
-   curr = head;
-   while (head != NULL && curr->id, id != 0)
+   curr - head;
+   while (curr != NULL && strcmp(curr->id, id != 0))
    {
       curr = curr->next;
    }
@@ -125,7 +125,8 @@ void clear()
 int main()
 {
    int choice;
-   int id;
+   int i;
+   char id[5];
    char namaLengkap[50];
    char tempatLahir[30];
    int tanggalLahir;
@@ -147,6 +148,13 @@ int main()
          {
             do
             {
+               printf(" Masukan id employee. Note: tidak kurang dari 1 angka atau lebih dari 5 angka: ");
+               scanf("%[^\n]", id);
+               fflush(stdin);
+            } while (strlen(id) < 1 || strlen(id) > 5);
+            printf("\n");
+            do
+            {
                printf(" Masukan nama lengkap employee. Note: tidak kurang dari 3 kata atau lebih dari 50 kata[3..50]: ");
                scanf("%[^\n]", namaLengkap);
                fflush(stdin);
@@ -154,7 +162,7 @@ int main()
             printf("\n");
             do
             {
-               printf(" Masukan tempat lahir employee. Note: tidak kurang dari 3 kata atau lebih dari 30 kata[3..30]:");
+               printf(" Masukan tempat lahir employee. Note: tidak kurang dari 3 kata atau lebih dari 30 kata[3..30]: ");
                scanf("%[^\n]", tempatLahir);
                fflush(stdin);
             } while (strlen(tempatLahir) < 3 || strlen(tempatLahir) > 30);
@@ -177,9 +185,10 @@ int main()
             printf("\n\n\n ---------- Data Employee baru berhasil di tambahkan ------------ \n");
             getchar();
             fflush(stdin);
-            id++;
+            i++;
             printf("\n");
-         } while (id <= 5);
+         } while (i <= 5);
+         i = 0;
          break;
       case 3:
          if (head == NULL)
@@ -191,9 +200,9 @@ int main()
             do
             {
                printf(" Masukan id employee untuk menghapus data employee. Note id employee maksimal 5 angka: ");
-               scanf("%d", &id);
+               scanf("%[^\n]", id);
                fflush(stdin);
-            } while (id <= 5);
+            } while (strlen(id) < 1 || strlen(id) > 5);
             pop(id);
          }
          getchar();
