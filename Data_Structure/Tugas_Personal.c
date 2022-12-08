@@ -15,7 +15,7 @@ struct DataKaryawan
 void view()
 {
    int i = 0, j = 0;
-   printf("        --------------------- LIST KARYAWAN -------------- \n\n");
+   printf("        --------------------- LIST EMPLOYEE -------------- \n\n");
    for (j = 0; j < 128; j++)
       printf("=");
    printf("\n");
