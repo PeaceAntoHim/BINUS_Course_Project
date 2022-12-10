@@ -28,7 +28,7 @@ void view()
    while (curr)
    {
       i++;
-      printf("| %3d.  |    %6d    |   %-20s   |   %-15s   |   %-8s     | %-8s     |\n",
+      printf("| %4d.  |    %8d    |   %-22s   |   %-17s   |   %-10s     | %-10s     |\n",
              i,
              curr->id,
              curr->namaLengkap,
@@ -170,6 +170,11 @@ void sortData()
             strcpy(curr->tanggalLahir, next->tanggalLahir);
             strcpy(next->tanggalLahir, tempTanggalLahir);
 
+            char tempJabatan[50];
+            strcpy(tempJabatan, curr->jabatan);
+            strcpy(curr->jabatan, next->jabatan);
+            strcpy(next->jabatan, tempJabatan);
+
             isSorted = 0;
          }
 
@@ -245,7 +250,7 @@ int main()
          {
             printf(" Masukan Tanggal Lahir Employee. Note: (Format: dd-mm-yyyy): ");
             scanf("%d-%d-%d", &day, &month, &year);
-            sprintf(tanggalLahir, "%d-%d-%d", &day, &month, &year);
+            sprintf(tanggalLahir, "%d-%d-%d", day, month, year);
             fflush(stdin);
          } while (day < 1 || day > 31 || month < 1 || month > 12 || year < 1);
          printf("\n");
