@@ -8,7 +8,7 @@ struct DataKaryawan
    char namaLengkap[50];
    char tempatLahir[30];
    char tanggalLahir[15];
-   char jabatan[21];
+   char jabatan[50];
    struct DataKaryawan *next;
 } * head, *tail, *curr;
 
@@ -28,8 +28,13 @@ void view()
    while (curr)
    {
       i++;
-      printf("| %3d.  |    %-12s    |   %-20s   |   %-15s   |   %8d     | %-15s     |\n",
-             i, curr->id, curr->namaLengkap, curr->tempatLahir, curr->tanggalLahir, curr->jabatan);
+      printf("| %3d.  |    %6d    |   %-20s   |   %-15s   |   %-8s     | %-8s     |\n",
+             i,
+             curr->id,
+             curr->namaLengkap,
+             curr->tempatLahir,
+             curr->tanggalLahir,
+             curr->jabatan);
       curr = curr->next;
    }
    for (j = 0; j < 128; j++)
@@ -188,7 +193,7 @@ void menu()
 void clear()
 {
    int i = 0;
-   for (i = 0; i < 25; i++)
+   for (i = 0; i < 20; i++)
       printf("\n");
 }
 
@@ -207,7 +212,7 @@ int main()
       clear();
       menu();
       scanf("%d", &choice);
-      // fflush(stdin);
+      fflush(stdin);
       switch (choice)
       {
       case 1:
@@ -243,7 +248,7 @@ int main()
             sprintf(tanggalLahir, "%d-%d-%d", &day, &month, &year);
             fflush(stdin);
          } while (day < 1 || day > 31 || month < 1 || month > 12 || year < 1);
-
+         printf("\n");
          do
          {
             printf(" Masukan Jabatan Employee. Note: (Tidak kurang dari 3 kata atau lebih dari 20 kata[3..20]): ");
