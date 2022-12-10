@@ -102,6 +102,86 @@ void display_data(Employee *head)
    }
 }
 
+// // Fungsi untuk menghapus data karyawan berdasarkan Employee ID
+// void delete_data(struct DataKaryawan **head, struct DataKaryawan **tail, int id) {
+//   // Jika linked list kosong, tidak ada data yang dapat dihapus
+//   if(*head == NULL) {
+//     return;
+//   }
+
+//   // Cari elemen dengan Employee ID sesuai input
+//   struct DataKaryawan *curr = *head;
+//   while(curr != NULL && curr->id != id) {
+//     curr = curr->next;
+//   }
+
+//   // Jika elemen tidak ditemukan, tampilkan pesan error
+//   if(curr == NULL) {
+//     printf("Data karyawan dengan Employee ID %d tidak ditemukan\n", id);
+//   }
+//   // Jika elemen ditemukan, hapus elemen tersebut dari linked list
+//   else {
+//     // Jika elemen yang ditemukan merupakan head, hapus head
+//     if(curr == *head) {
+//       *head = (*head)->next;
+//       free(curr);
+//     }
+//     // Jika elemen yang ditemukan bukan head dan bukan tail, hapus elemen dari tengah linked list
+//     else if(*head != curr && *tail != curr) {
+//       struct DataKaryawan *temp = *head;
+//       while(temp->next != curr) {
+//         temp = temp->next;
+//       }
+//       temp->next = curr->next;
+//       free(curr);
+//     }
+// Jika elemen yang ditemukan merupakan tail, hap
+
+// // Fungsi untuk menghapus data karyawan berdasarkan Employee ID
+// void delete_data(struct DataKaryawan **head, struct DataKaryawan **tail, int id) {
+//   // Jika linked list kosong, tidak ada data yang dapat dihapus
+//   if(*head == NULL) {
+//     return;
+//   }
+
+//   // Cari elemen dengan Employee ID sesuai input
+//   struct DataKaryawan *curr = *head;
+//   while(curr != NULL && curr->id != id) {
+//     curr = curr->next;
+//   }
+
+//   // Jika elemen tidak ditemukan, tampilkan pesan error
+//   if(curr == NULL) {
+//     printf("Data karyawan dengan Employee ID %d tidak ditemukan\n", id);
+//   }
+//   // Jika elemen ditemukan, hapus elemen tersebut dari linked list
+//   else {
+//     // Jika elemen yang ditemukan merupakan head, hapus head
+//     if(curr == *head) {
+//       *head = (*head)->next;
+//       free(curr);
+//     }
+//     // Jika elemen yang ditemukan bukan head dan bukan tail, hapus elemen dari tengah linked list
+//     else if(*head != curr && *tail != curr) {
+//       struct DataKaryawan *temp = *head;
+//       while(temp->next != curr) {
+//         temp = temp->next;
+//       }
+//       temp->next = curr->next;
+//       free(curr);
+//     }
+//     // Jika elemen yang ditemukan merupakan tail, hapus tail
+//     else {
+//       *tail = *head;
+//       while((*tail)->next != curr) {
+//         *tail = (*tail)->next;
+//       }
+//       (*tail)->next = NULL;
+//       free(curr);
+//     }
+//   }
+// }
+
 // Fungsi untuk menghapus data karyawan berdasarkan Employee ID
 void delete_data(Employee **head, Employee **tail, int id)
 {

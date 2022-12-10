@@ -28,7 +28,7 @@ void view()
    while (curr)
    {
       i++;
-      printf("| %4d.  |    %8d    |   %-22s   |   %-17s   |   %-10s     | %-10s     |\n",
+      printf("| %4d.  |    %8d    |   %-212s   |   %-16s   |   %-9s     | %-9s     |\n",
              i,
              curr->id,
              curr->namaLengkap,
@@ -88,21 +88,26 @@ void push(int id, char namaLengkap[], char tempatLahir[], char tanggalLahir[], c
 
 void pop(int id)
 {
+   if (head == NULL)
+   {
+      return;
+   }
+
    curr = head;
-   while (curr != NULL)
+   while (curr != NULL && curr->id != id)
    {
       curr = curr->next;
    }
 
    if (curr == NULL)
    {
-      printf("    Id employee yang anda masukan tidak di temukan \n");
+      printf("   Data karyawan dengan Employee ID %d tidak di temukan \n", id);
    }
    else if (head == curr)
    {
       head = head->next;
       free(curr);
-      printf("    Id employee yang anda masukan telah berhasil di hapus \n");
+      printf("    Data karywan dengan Employee ID %d berhasil di hapus \n", id);
    }
    else if (head != curr && tail != curr)
    {
@@ -112,11 +117,11 @@ void pop(int id)
          temp = temp->next;
       temp->next = curr->next;
       free(curr);
-      printf("   Id employee yang anda masukan telah berhasil di hapus \n");
+      printf("   Data karywan dengan Employee ID %d berhasil di hapus \n", id);
    }
    else if (tail == curr)
    {
-      printf("    Id employee yang anda masukan tidak bisa di hapus karena employee terkahir\n");
+      printf("    Data karyawan dengan ID %d tidak berhasil di hapus karena data terakhir\n", id);
    }
 }
 
