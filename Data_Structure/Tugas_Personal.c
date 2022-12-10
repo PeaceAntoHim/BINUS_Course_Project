@@ -39,6 +39,20 @@ void view()
    fflush(stdin);
 }
 
+int countData()
+{
+   int count = 0;
+   curr = head;
+
+   while (curr != NULL)
+   {
+      count++;
+      curr = curr->next;
+   }
+
+   return count;
+}
+
 void push(int id, char namaLengkap[], char tempatLahir[], char tanggalLahir[], char jabatan[])
 {
 
@@ -109,20 +123,6 @@ void popall()
       head = head->next;
       free(curr);
    }
-}
-
-int countData()
-{
-   int count = 0;
-   curr = head;
-
-   while (curr != NULL)
-   {
-      count++;
-      curr = curr->next;
-   }
-
-   return count;
 }
 
 void sortData()
@@ -207,7 +207,7 @@ int main()
       clear();
       menu();
       scanf("%d", &choice);
-      fflush(stdin);
+      // fflush(stdin);
       switch (choice)
       {
       case 1:
@@ -224,21 +224,21 @@ int main()
          printf("\n");
          do
          {
-            printf(" Masukan nama lengkap employee. Note: (Tidak kurang dari 3 kata atau lebih dari 50 kata[3..50]): ");
+            printf(" Masukan Nama Lengkap Employee. Note: (Tidak kurang dari 3 kata atau lebih dari 50 kata[3..50]): ");
             scanf("%[^\n]", namaLengkap);
             fflush(stdin);
          } while (strlen(namaLengkap) < 3 || strlen(namaLengkap) > 50);
          printf("\n");
          do
          {
-            printf(" Masukan tempat lahir employee. Note: (Tidak kurang dari 3 kata atau lebih dari 30 kata[3..30]): ");
+            printf(" Masukan Tempat Lahir Employee. Note: (Tidak kurang dari 3 kata atau lebih dari 30 kata[3..30]): ");
             scanf("%[^\n]", tempatLahir);
             fflush(stdin);
          } while (strlen(tempatLahir) < 3 || strlen(tempatLahir) > 30);
          printf("\n");
          do
          {
-            printf(" Masukan tanggal lahir employee. Note: (format: dd-mm-yyyy): ");
+            printf(" Masukan Tanggal Lahir Employee. Note: (Format: dd-mm-yyyy): ");
             scanf("%d-%d-%d", &day, &month, &year);
             sprintf(tanggalLahir, "%d-%d-%d", &day, &month, &year);
             fflush(stdin);
@@ -246,7 +246,7 @@ int main()
 
          do
          {
-            printf(" Masukan jabata employee. Note: tidak kurang dari 3 kata atau lebih dari 20 kata[3..20]: ");
+            printf(" Masukan Jabatan Employee. Note: (Tidak kurang dari 3 kata atau lebih dari 20 kata[3..20]): ");
             scanf("%[^\n]", jabatan);
             fflush(stdin);
          } while (strlen(jabatan) < 3 || strlen(jabatan) > 20);
