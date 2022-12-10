@@ -39,10 +39,10 @@ void view()
    fflush(stdin);
 }
 
-void push(char id[], char namaLengkap[], char tempatLahir[], int tanggalLahir[], char jabatan[])
+void push(int id, char namaLengkap[], char tempatLahir[], char tanggalLahir[], char jabatan[])
 {
 
-   if (countData(head) >= 5)
+   if (countData() >= 5)
    {
       printf("Data karyawan sudah mencapai batas maksimal (5 data)\n");
       return;
@@ -176,13 +176,13 @@ void sortData()
 
 void menu()
 {
-   printf("\n COMPUTER ADMINISTRATOR");
-   printf("\n +++++++++++++++++++++++");
-   printf("\n 1. List Employee");
-   printf("\n 2. Add (PUSH) Data Employee Baru");
-   printf("\n 3. Hapus (POP) Data Employee Lama");
-   printf("\n 4. Keluar Program");
-   printf("\n >> Input Pilihan : ");
+   printf("COMPUTER ADMINISTRATOR\n");
+   printf("+++++++++++++++++++++++\n");
+   printf("1. List Employee\n");
+   printf("2. Add (PUSH) Data Employee Baru\n");
+   printf("3. Hapus (POP) Data Employee Lama\n");
+   printf("4. Keluar Program\n");
+   printf(">> Input Pilihan : \n");
 }
 
 void clear()
@@ -238,7 +238,7 @@ int main()
          printf("\n");
          do
          {
-            printf(" Masukan tanggal lahir employee. Note: (format: dd/mm/yyyy): ");
+            printf(" Masukan tanggal lahir employee. Note: (format: dd-mm-yyyy): ");
             scanf("%d-%d-%d", &day, &month, &year);
             sprintf(tanggalLahir, "%d-%d-%d", &day, &month, &year);
             fflush(stdin);
@@ -269,7 +269,7 @@ int main()
                printf(" Masukan id employee untuk menghapus data employee. Note id employee maksimal 5 angka: ");
                scanf("%d", &id);
                fflush(stdin);
-            } while (strlen(id) < 1 || strlen(id) > 5);
+            } while (id >= 99999);
             pop(id);
          }
          getchar();
