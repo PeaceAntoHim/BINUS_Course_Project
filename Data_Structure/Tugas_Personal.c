@@ -41,8 +41,14 @@ void view()
 
 void push(char id[], char namaLengkap[], char tempatLahir[], int tanggalLahir[], char jabatan[])
 {
+
+   if (countData(head) >= 5)
+   {
+      printf("Data karyawan sudah mencapai batas maksimal (5 data)\n");
+      return;
+   }
+
    curr = (struct DataKaryawan *)malloc(sizeof(struct DataKaryawan));
-   // strcpy(curr->id, id);
    curr->id = id;
    strcpy(curr->namaLengkap, namaLengkap);
    strcpy(curr->tempatLahir, tempatLahir);
@@ -61,10 +67,10 @@ void push(char id[], char namaLengkap[], char tempatLahir[], int tanggalLahir[],
    tail->next = NULL;
 }
 
-void pop(char id[])
+void pop(int id)
 {
    curr = head;
-   while (curr != NULL && strcmp(curr->id, id) != 0)
+   while (curr != NULL)
    {
       curr = curr->next;
    }
@@ -105,6 +111,69 @@ void popall()
    }
 }
 
+int countData()
+{
+   int count = 0;
+   curr = head;
+
+   while (curr != NULL)
+   {
+      count++;
+      curr = curr->next;
+   }
+
+   return count;
+}
+
+void sortData()
+{
+   if (head == NULL || head->next == NULL)
+   {
+      return;
+   }
+
+   struct DataKaryawan *next;
+
+   int isSorted = 0;
+   while (!isSorted)
+   {
+      isSorted = 1;
+
+      curr = head;
+      next = curr->next;
+
+      while (next != NULL)
+      {
+         if (curr->id > next->id)
+         {
+            int tempId = curr->id;
+            curr->id = next->id;
+            next->id = tempId;
+
+            char tempNamaLengkap[30];
+            strcpy(tempNamaLengkap, curr->namaLengkap);
+            strcpy(curr->namaLengkap, next->namaLengkap);
+            strcpy(next->namaLengkap, tempNamaLengkap);
+
+            char tempTempatLahir[30];
+            strcpy(tempTempatLahir, curr->tempatLahir);
+            strcpy(curr->tempatLahir, next->tempatLahir);
+            strcpy(next->tempatLahir, tempTempatLahir);
+
+            char tempTanggalLahir[15];
+            strcpy(tempTanggalLahir, curr->tanggalLahir);
+            strcpy(curr->tanggalLahir, next->tanggalLahir);
+            strcpy(next->tanggalLahir, tempTanggalLahir);
+
+            isSorted = 0;
+         }
+
+         curr = curr->next;
+         next = curr->next;
+      }
+   }
+}
+
 void menu()
 {
    printf("\n COMPUTER ADMINISTRATOR");
@@ -126,10 +195,11 @@ void clear()
 int main()
 {
    int choice;
-   char id[5];
+   int id;
    char namaLengkap[50];
    char tempatLahir[30];
-   int tanggalLahir;
+   char tanggalLahir[15];
+   int day, month, year;
    char jabatan[21];
 
    do
@@ -141,36 +211,38 @@ int main()
       switch (choice)
       {
       case 1:
+         sortData();
          view();
          break;
       case 2:
          do
          {
-            printf(" Masukan id employee. Note: tidak kurang dari 1 angka atau lebih dari 5 angka: ");
-            scanf("%d", id);
+            printf(" Masukan Employee Id . Note: (Maksimal 5 angka): ");
+            scanf("%d", &id);
             fflush(stdin);
-         } while (strlen(id) < 1 || strlen(id) > 5);
+         } while (id >= 99999);
          printf("\n");
          do
          {
-            printf(" Masukan nama lengkap employee. Note: tidak kurang dari 3 kata atau lebih dari 50 kata[3..50]: ");
+            printf(" Masukan nama lengkap employee. Note: (Tidak kurang dari 3 kata atau lebih dari 50 kata[3..50]): ");
             scanf("%[^\n]", namaLengkap);
             fflush(stdin);
          } while (strlen(namaLengkap) < 3 || strlen(namaLengkap) > 50);
          printf("\n");
          do
          {
-            printf(" Masukan tempat lahir employee. Note: tidak kurang dari 3 kata atau lebih dari 30 kata[3..30]: ");
+            printf(" Masukan tempat lahir employee. Note: (Tidak kurang dari 3 kata atau lebih dari 30 kata[3..30]): ");
             scanf("%[^\n]", tempatLahir);
             fflush(stdin);
          } while (strlen(tempatLahir) < 3 || strlen(tempatLahir) > 30);
          printf("\n");
          do
          {
-            printf(" Masukan tanggal lahir employee. Note: tidak kurang dari angka 1 atau lebih dari angka 31: ");
-            scanf("%d", &tanggalLahir);
+            printf(" Masukan tanggal lahir employee. Note: (format: dd/mm/yyyy): ");
+            scanf("%d-%d-%d", &day, &month, &year);
+            sprintf(tanggalLahir, "%d-%d-%d", &day, &month, &year);
             fflush(stdin);
-         } while (tanggalLahir < 1 || tanggalLahir > 31);
+         } while (day < 1 || day > 31 || month < 1 || month > 12 || year < 1);
 
          do
          {
@@ -195,7 +267,7 @@ int main()
             do
             {
                printf(" Masukan id employee untuk menghapus data employee. Note id employee maksimal 5 angka: ");
-               scanf("%[^\n]", id);
+               scanf("%d", &id);
                fflush(stdin);
             } while (strlen(id) < 1 || strlen(id) > 5);
             pop(id);
@@ -206,8 +278,13 @@ int main()
       case 4:
          popall();
          break;
+      case 5:
+         break;
+      default:
+         printf("Pilihan anda tidak valid\n");
+         break;
       };
 
-   } while (choice != 4);
+   } while (choice != 5);
    return 0;
 }

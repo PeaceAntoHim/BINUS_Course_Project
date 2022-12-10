@@ -172,6 +172,71 @@ void clear_data(Employee **head, Employee **tail)
    printf("Semua data karyawan berhasil dihapus\n");
 }
 
+// Fungsi untuk mengurutkan data karyawan berdasarkan Employee ID
+void sort_data(Employee *head)
+{
+   // Jika linked list kosong atau hanya terdiri dari 1 elemen, tidak perlu diurutkan
+   if (head == NULL || head->next == NULL)
+   {
+      return;
+   }
+
+   // Deklarasikan variabel untuk menyimpan data karyawan selama proses sorting
+   Employee *curr;
+   Employee *next;
+
+   // Lakukan iterasi selama data belum terurut
+   int is_sorted = 0;
+   while (!is_sorted)
+   {
+      // Set is_sorted menjadi 1, jika data sudah terurut maka is_sorted tidak akan berubah
+      is_sorted = 1;
+
+      // Set curr dan next ke elemen pertama
+      curr = head;
+      next = curr->next;
+
+      // Lakukan iterasi selama next tidak NULL
+      while (next != NULL)
+      {
+         // Jika Employee ID dari curr lebih besar dari Employee ID dari next, tukar data karyawan
+         if (curr->id > next->id)
+         {
+            int temp_id = curr->id;
+            curr->id = next->id;
+            next->id = temp_id;
+
+            char temp_nama[30];
+            strcpy(temp_nama, curr->nama);
+            strcpy(curr->nama, next->nama);
+            strcpy(next->nama, temp_nama);
+
+            char temp_tempat_lahir[30];
+            strcpy(temp_tempat_lahir, curr->tempat_lahir);
+            strcpy(curr->tempat_lahir, next->tempat_lahir);
+            strcpy(next->tempat_lahir, temp_tempat_lahir);
+
+            char temp_tanggal_lahir[15];
+            strcpy(temp_tanggal_lahir, curr->tanggal_lahir);
+            strcpy(curr->tanggal_lahir, next->tanggal_lahir);
+            strcpy(next->tanggal_lahir, temp_tanggal_lahir);
+
+            char temp_jabatan[50];
+            strcpy(temp_jabatan, curr->jabatan);
+            strcpy(curr->jabatan, next->jabatan);
+            strcpy(next->jabatan, temp_jabatan);
+
+            // Set is_sorted menjadi 0 karena data belum terurut
+            is_sorted = 0;
+         }
+
+         // Pindahkan curr dan next ke elemen selanjutnya
+         curr = curr->next;
+         next = curr->next;
+      }
+   }
+}
+
 int main()
 {
    // Deklarasikan variabel untuk linked list
@@ -201,6 +266,7 @@ int main()
          push_data(&head, &tail);
          break;
       case 2: // Tampilkan daftar karyawan
+         sort_data(head);
          display_data(head);
          break;
       case 3: // Hapus data karyawan
