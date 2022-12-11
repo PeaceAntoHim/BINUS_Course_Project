@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 struct DataKaryawan
 {
@@ -63,12 +62,7 @@ void push(int id, char namaLengkap[], char tempatLahir[], char tanggalLahir[], c
 {
    if (countData() >= 5)
    {
-      printf("Data karyawan sudah mencapai batas maksimal (5 data)\n");
-      return;
-   }
-   else if (!isdigit(id))
-   {
-      printf("Maaf, Employee ID hanya dapat diisi dengan angka\n");
+      printf("------------------ Data karyawan sudah mencapai batas maksimal (5 data) ------------------------------------\n");
       return;
    }
 
@@ -101,7 +95,7 @@ void push(int id, char namaLengkap[], char tempatLahir[], char tanggalLahir[], c
       tail = curr;
    }
    tail->next = NULL;
-   printf("\n\n\n ---------- Data Employee baru berhasil di tambahkan ------------ \n");
+   printf("\n\n\n ---------- Data Employee baru berhasil di tambahkan jika ingin menambahkan data lagi klik enter ------------ \n");
 }
 
 void pop(int id)
@@ -228,8 +222,7 @@ void clear()
 
 int main()
 {
-   int choice;
-   int id;
+   int choice, id;
    char namaLengkap[50];
    char tempatLahir[30];
    char tanggalLahir[15];
@@ -251,7 +244,7 @@ int main()
             printf(" Masukan Employee Id . Note: (Maksimal 5 angka): ");
             scanf("%d", &id);
             fflush(stdin);
-         } while (id < 1 || id > 99999 || !isdigit(id));
+         } while (id < 1 || id > 99999);
          printf("\n");
          do
          {
@@ -303,7 +296,7 @@ int main()
                printf(" Masukan id employee untuk menghapus data employee. Note id employee maksimal 5 angka: ");
                scanf("%d", &id);
                fflush(stdin);
-            } while (id < 1 || id > 99999 || !isdigit(id));
+            } while (id < 1 || id > 99999);
             pop(id);
          }
          getchar();
