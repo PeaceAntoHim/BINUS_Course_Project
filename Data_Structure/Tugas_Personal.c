@@ -10,7 +10,7 @@ struct DataKaryawan
    char tanggalLahir[15];
    char jabatan[50];
    struct DataKaryawan *next;
-} * head, *tail, *curr;
+} *head, *tail, *curr;
 
 void view()
 {
@@ -196,7 +196,8 @@ void menu()
    printf("1. List Employee\n");
    printf("2. Add (PUSH) Data Employee Baru\n");
    printf("3. Hapus (POP) Data Employee Lama\n");
-   printf("4. Keluar Program\n");
+   printf("4. Hapus semua Data Employee\n");
+   printf("5. Keluar dari program\n");
    printf(">> Input Pilihan : \n");
 }
 
