@@ -227,10 +227,6 @@ int main()
       switch (choice)
       {
       case 1:
-         sortData();
-         view();
-         break;
-      case 2:
          do
          {
             printf(" Masukan Employee Id . Note: (Maksimal 5 angka): ");
@@ -272,6 +268,10 @@ int main()
          getchar();
          fflush(stdin);
          printf("\n");
+         break;
+      case 2:
+         sortData();
+         view();
          break;
       case 3:
          if (head == NULL)
