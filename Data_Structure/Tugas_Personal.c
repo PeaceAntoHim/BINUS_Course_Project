@@ -16,19 +16,19 @@ void view()
 {
    int i = 0, j = 0;
    printf("        --------------------- LIST EMPLOYEE -------------- \n\n");
-   for (j = 0; j < 128; j++)
+   for (j = 0; j < 115; j++)
       printf("=");
    printf("\n");
    printf("| %-3s    |    %-6s    |   %-20s   |   %-15s   |   %-8s    |   %-8s    |\n",
           "No.", "ID", "Nama Lengkap", "Tempat Lahir", "Tanggal Lahir", "Jabatan");
-   for (j = 0; j < 128; j++)
+   for (j = 0; j < 115; j++)
       printf("=");
    printf("\n");
    curr = head;
    while (curr)
    {
       i++;
-      printf("| %4d.  |    %8d    |   %-212s   |   %-16s   |   %-9s     | %-9s     |\n",
+      printf("| %4d.  |    %8d    |   %-21s   |   %-16s   |   %-9s     | %-9s     |\n",
              i,
              curr->id,
              curr->namaLengkap,
@@ -37,7 +37,7 @@ void view()
              curr->jabatan);
       curr = curr->next;
    }
-   for (j = 0; j < 128; j++)
+   for (j = 0; j < 115; j++)
       printf("=");
    printf("\n");
    getchar();
@@ -191,11 +191,11 @@ void sortData()
 
 void menu()
 {
-   printf("COMPUTER ADMINISTRATOR\n");
-   printf("+++++++++++++++++++++++\n");
-   printf("1. List Employee\n");
-   printf("2. Add (PUSH) Data Employee Baru\n");
-   printf("3. Hapus (POP) Data Employee Lama\n");
+   printf("       COMPUTER ADMINISTRATOR\n");
+   printf("+++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+   printf("1. Add (PUSH) Data Employee Baru\n");
+   printf("2. Tampilkan List Data Employee Yang Sudah di Urutkan\n");
+   printf("3. Hapus (POP) Data Employee Lama Berdasarkan ID\n");
    printf("4. Hapus semua Data Employee\n");
    printf("5. Keluar dari program\n");
    printf(">> Input Pilihan : \n");
@@ -236,7 +236,7 @@ int main()
             printf(" Masukan Employee Id . Note: (Maksimal 5 angka): ");
             scanf("%d", &id);
             fflush(stdin);
-         } while (id >= 99999);
+         } while (id >= 99999 || id < 0);
          printf("\n");
          do
          {
@@ -285,7 +285,7 @@ int main()
                printf(" Masukan id employee untuk menghapus data employee. Note id employee maksimal 5 angka: ");
                scanf("%d", &id);
                fflush(stdin);
-            } while (id >= 99999);
+            } while (id >= 99999 || id < 0);
             pop(id);
          }
          getchar();
@@ -293,6 +293,7 @@ int main()
          break;
       case 4:
          popall();
+         printf(" Semua Data Karyawan berhasil di hapus \n");
          break;
       case 5:
          break;
