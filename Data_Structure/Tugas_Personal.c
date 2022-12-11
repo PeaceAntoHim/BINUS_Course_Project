@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 struct DataKaryawan
 {
@@ -60,11 +61,27 @@ int countData()
 
 void push(int id, char namaLengkap[], char tempatLahir[], char tanggalLahir[], char jabatan[])
 {
-
    if (countData() >= 5)
    {
       printf("Data karyawan sudah mencapai batas maksimal (5 data)\n");
       return;
+   }
+   else if (!isdigit(id))
+   {
+      printf("Maaf, Employee ID hanya dapat diisi dengan angka\n");
+      return;
+   }
+
+   // Cek apakah id sudah ada dalam data yang sudah tersimpan
+   struct DataKaryawan *temp = head;
+   while (temp != NULL)
+   {
+      if (temp->id == id)
+      {
+         printf("Maaf, Employee ID sudah ada dalam data yang sudah tersimpan\n");
+         return;
+      }
+      temp = temp->next;
    }
 
    curr = (struct DataKaryawan *)malloc(sizeof(struct DataKaryawan));
@@ -84,6 +101,7 @@ void push(int id, char namaLengkap[], char tempatLahir[], char tanggalLahir[], c
       tail = curr;
    }
    tail->next = NULL;
+   printf("\n\n\n ---------- Data Employee baru berhasil di tambahkan ------------ \n");
 }
 
 void pop(int id)
@@ -227,12 +245,13 @@ int main()
       switch (choice)
       {
       case 1:
+
          do
          {
             printf(" Masukan Employee Id . Note: (Maksimal 5 angka): ");
             scanf("%d", &id);
             fflush(stdin);
-         } while (id >= 99999 || id < 0);
+         } while (id < 1 || id > 99999 || !isdigit(id));
          printf("\n");
          do
          {
@@ -254,17 +273,16 @@ int main()
             scanf("%d-%d-%d", &day, &month, &year);
             sprintf(tanggalLahir, "%d-%d-%d", day, month, year);
             fflush(stdin);
-         } while (day < 1 || day > 31 || month < 1 || month > 12 || year < 1);
+         } while (day < 1 || day > 31 || month < 1 || month > 12 || year < 1900);
          printf("\n");
          do
          {
             printf(" Masukan Jabatan Employee. Note: (Tidak kurang dari 3 kata atau lebih dari 20 kata[3..20]): ");
             scanf("%[^\n]", jabatan);
             fflush(stdin);
-         } while (strlen(jabatan) < 3 || strlen(jabatan) > 20);
+         } while (strlen(jabatan) < 2 || strlen(jabatan) > 20);
          printf("\n");
          push(id, namaLengkap, tempatLahir, tanggalLahir, jabatan);
-         printf("\n\n\n ---------- Data Employee baru berhasil di tambahkan ------------ \n");
          getchar();
          fflush(stdin);
          printf("\n");
@@ -276,7 +294,7 @@ int main()
       case 3:
          if (head == NULL)
          {
-            printf(" List data employee kosong...");
+            printf(" \nList data employee kosong...");
          }
          else
          {
@@ -285,7 +303,7 @@ int main()
                printf(" Masukan id employee untuk menghapus data employee. Note id employee maksimal 5 angka: ");
                scanf("%d", &id);
                fflush(stdin);
-            } while (id >= 99999 || id < 0);
+            } while (id < 1 || id > 99999 || !isdigit(id));
             pop(id);
          }
          getchar();
