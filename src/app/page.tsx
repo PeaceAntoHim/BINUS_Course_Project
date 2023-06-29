@@ -4,7 +4,7 @@ import styles from './page.module.css'
 export default function Home() {
   return (
     <main className={styles.main}>
-          <h1 className={styles.heading}>Algorithm Repositories</h1>
+          <h1 >Algorithm Repositories</h1>
           <ul>
             <li><Link href="assets/Algoritma_design_Analysis">Artificial_Intelligence</Link> - Created 10 months ago</li>
             <li><a href="assets/Banker_Algorithms/">Banker_Algorithms</a> - Added 8 months ago</li>
