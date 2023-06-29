@@ -1,95 +1,34 @@
-import Image from 'next/image'
+import Link from 'next/link'
 import styles from './page.module.css'
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          <h1 className={styles.heading}>Algorithm Repositories</h1>
+          <ul>
+            <li><Link href="directory/pages">Artificial_Intelligence</Link> - Created 10 months ago</li>
+            <li><a href="/Banker_Algorithms/">Banker_Algorithms</a> - Added 8 months ago</li>
+            <li><a href="/Computational Physics and Biology/">Computational Physics and Biology</a> - Updated new course 3 weeks ago</li>
+            <li><a href="/assets/Data_Structure/">Data_Structure</a> - Updated new learn last month</li>
+            <li><a href="/GOLANG/">GOLANG</a> - Created new 6 months ago</li>
+            <li><a href="/Latiahn_VIcon/">Latiahn_VIcon</a> - Added new last year</li>
+            <li><a href="/Latihan_Number_operation/">Latihan_Number_operation</a> - Created new last year</li>
+            <li><a href="/Latihan_String_operation/">Latihan_String_operation</a> - Created new last year</li>
+            <li><a href="/Latihan_vicon2/">Latihan_vicon2</a> - Created new last year</li>
+            <li><a href="/Scientific_Computing/">Scientific_Computing</a> - Added new example last month</li>
+            <li><a href="/Thread/">Thread</a> - Created thread 9 months ago</li>
+            <li><a href="/Tugas_1/">Tugas_1</a> - Perbaiki lagi last year</li>
+            <li><a href="/Tugas_Bitwise/">Tugas_Bitwise</a> - Added new last year</li>
+            <li><a href="/Tugas_Forum/">Tugas_Forum</a> - Learned selection sort and implemented the algorithm last year</li>
+            <li><a href="/Tugas_Kelompok_2/">Tugas_Kelompok_2</a> - Vicon 2 last year</li>
+            <li><a href="/Tugas_Kelompok_3/">Tugas_Kelompok_3</a> - Added new last year</li>
+            <li><a href="/Tugas_Kelompok_4/">Tugas_Kelompok_4</a> - Finished my team project last year</li>
+            <li><a href="/Tugas_Personal_2/">Tugas_Personal_2</a> - Added new last year</li>
+            <li><a href="/Tugas_kelompok_1/">Tugas_kelompok_1</a> - Buat tugas 2 kelompok last year</li>
+            <li><a href="/Vicon_5/">Vicon_5</a> - Made new program at Vicon last year</li>
+            <li><a href="/Vicon_Terakhir/">Vicon_Terakhir</a> - Learned how to manipulate strings last year</li>
+            <li><a href="/bncc-codeid/">bncc-codeid</a> - Updated new 10 months ago</li>
+          </ul>
     </main>
   )
 }
