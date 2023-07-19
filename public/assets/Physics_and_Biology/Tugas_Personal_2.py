@@ -18,7 +18,7 @@ dataTerm = [
 
 Entrez.email = 'your_email@example.com'  # Replace with your email address
 
-handle = Entrez.espell(db='pmc', term=' '.join(dataTerm))
+handle = Entrez.espell(db='pmc', term=''.join(dataTerm))
 record = Entrez.read(handle)
 
 print(type(record))
