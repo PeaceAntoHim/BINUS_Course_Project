@@ -1,0 +1,61 @@
+@startuml
+left to right direction
+rectangle LMS {
+  usecase "Mengakses Materi Kuliah" as usecase1
+  usecase "Mengumpulkan Tugas" as usecase2
+ 
+  usecase "Menjawab Forum" as usecase4
+  usecase "Mengelola Mata kuliah" as usecase5
+ 
+  usecase "Menyiapkan Materi" as usecase7
+  usecase "Memberikan Tugas" as usecase8
+  usecase "Membuat Forum Diskusi" as usecase9
+  usecase "Membayar Biaya Kuliah" as usecase10
+  usecase "Memilih Mata Kuliah & Kelas" as usecase11
+  usecase "Memberi Nilai" as usecase12
+  usecase "Mengatur Deadline Mahasiswa" as usecase13
+  usecase "Chat ke BOT" as usecase14
+  usecase "Registrasi Webinar" as usecase15
+ usecase "Notifikasi Penilaian" as usecase16
+usecase "Cari Kontak" as usecase17
+usecase "Mengerjakan Quiz" as usecase18
+usecase "Video Conference" as usecase19
+
+  
+
+}
+  STUDENT --> usecase1 : Memilih
+  STUDENT --> usecase2 : Mengumpulkan
+  
+  STUDENT --> usecase4 : Mengajukan
+  STUDENT --> usecase10 : Membayar
+  STUDENT --> usecase11 : Memilih
+STUDENT --> usecase15 : Mendaftar
+STUDENT --> usecase14 
+STUDENT --> usecase17 : mengakses
+STUDENT --> usecase18
+STUDENT --> usecase19 : mengakses
+
+
+usecase16 --> STUDENT :  Notify
+
+ ADMIN -up-> usecase11 : Mengelola
+  ADMIN -up-> usecase5 : Mengelola
+ 
+  ADMIN -up-> usecase7 : Mengelola
+
+
+ADMIN -up-> usecase19 : Membuat
+ 
+  
+ 
+  
+
+  LECTURER --> usecase5 : Mengelola
+  LECTURER --> usecase12 
+  LECTURER --> usecase7 : Menyiapkan
+  LECTURER --> usecase8 : Memberikan
+  LECTURER --> usecase9 : Membuat
+  LECTURER --> usecase13 : Mengatur
+  LECTURER --> usecase19 : Mengakses
+@enduml
