@@ -1,0 +1,132 @@
+@startuml
+class Mahasiswa {
+    - MahasiswaID: INT
+    - Nama: VARCHAR(255)
+    - NIM: VARCHAR(20) UNIQUE
+    - Email: VARCHAR(255)
+    - Password: VARCHAR(255)
+}
+
+class MataKuliah {
+    - MataKuliahID: INT
+    - NamaMataKuliah: VARCHAR(255)
+    - Deskripsi: TEXT
+}
+
+class KelasMataKuliah {
+    - KelasID: INT
+    - MataKuliahID: INT
+    - NamaKelas: VARCHAR(255)
+    - Semester: INT
+    - Tahun: INT
+}
+
+class Tugas {
+    - TugasID: INT
+    - KelasID: INT
+    - NamaTugas: VARCHAR(255)
+    - Deadline: DATE
+}
+
+class JawabanTugas {
+    - JawabanID: INT
+    - TugasID: INT
+    - MahasiswaID: INT
+    - IsiJawaban: TEXT
+}
+
+class ForumDiskusi {
+    - ForumID: INT
+    - KelasID: INT
+    - NamaForum: VARCHAR(255)
+}
+
+class PesanForum {
+    - PesanID: INT
+    - ForumID: INT
+    - PengirimID: INT
+    - IsiPesan: TEXT
+    - TanggalPesan: DATETIME
+}
+
+class Pembayaran {
+    - PembayaranID: INT
+    - MahasiswaID: INT
+    - JumlahBiaya: DECIMAL(10, 2)
+    - TanggalPembayaran: DATE
+}
+
+class Penilaian {
+    - PenilaianID: INT
+    - TugasID: INT
+    - MahasiswaID: INT
+    - Nilai: DECIMAL(5, 2)
+}
+
+class Administrator {
+    - AdminID: INT
+    - Nama: VARCHAR(255)
+    - Email: VARCHAR(255)
+    - Password: VARCHAR(255)
+}
+
+class Dosen {
+    - DosenID: INT
+    - Nama: VARCHAR(255)
+    - Email: VARCHAR(255)
+    - Password: VARCHAR(255)
+}
+
+class DosenMengajar {
+    - DosenID: INT
+    - MataKuliahID: INT
+}
+
+class Webinar {
+    - WebinarID: INT
+    - KelasID: INT
+    - NamaWebinar: VARCHAR(255)
+    - TanggalWebinar: DATETIME
+}
+
+class Quiz {
+    - QuizID: INT
+    - KelasID: INT
+    - NamaQuiz: VARCHAR(255)
+    - TanggalQuiz: DATE
+}
+
+class MahasiswaKelas {
+    - MahasiswaID: INT
+    - KelasID: INT
+}
+
+class AdminKelolaKelas {
+    - AdminID: INT
+    - KelasID: INT
+}
+
+class Notifikasi {
+    - NotifikasiID: INT
+    - PenerimaID: INT
+    - IsiNotifikasi: TEXT
+    - TanggalNotifikasi: DATETIME
+}
+
+Mahasiswa --|{ KelasMataKuliah : Takes
+Mahasiswa --|{ Tugas : Submits
+Tugas }--|| JawabanTugas : Has
+KelasMataKuliah --|{ Tugas : Contains
+KelasMataKuliah --|{ ForumDiskusi : Has
+ForumDiskusi --|{ PesanForum : Contains
+Mahasiswa }--|| Pembayaran : Makes
+Tugas }--|| Penilaian : GradedBy
+Administrator --|{ KelasMataKuliah : Manages
+Administrator --|{ AdminKelolaKelas : Manages
+Dosen --|{ KelasMataKuliah : Teaches
+Dosen --|{ DosenMengajar : Teaches
+Dosen --|{ Webinar : Conducts
+Dosen --|{ Quiz : Conducts
+Mahasiswa --|{ MahasiswaKelas : Enrolls
+Notifikasi }--|| Mahasiswa : SentTo
+@enduml
