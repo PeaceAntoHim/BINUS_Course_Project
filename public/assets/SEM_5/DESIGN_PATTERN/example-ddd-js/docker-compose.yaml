@@ -1,0 +1,30 @@
+version: '3'
+services:
+    rabbitmq:
+        image: rabbitmq
+        # command: sh -c "rabbitmqctl rotate_secret"
+        networks:
+            - ddd-javascript-sample-network
+        expose:
+            - '5672'
+        ports:
+            - '5672:5672'
+    redis:
+        image: redis:6.0.6-alpine
+        networks:
+            - ddd-javascript-sample-network
+        expose:
+            - '6379'
+        ports:
+            - '6379:6379'
+    mongodb:
+        image: mongo:latest
+        container_name: mongodb
+        networks:
+            - ddd-javascript-sample-network
+        ports:
+            - "27017:27017"
+        volumes:
+            - ./data:/data/db
+networks:
+    ddd-javascript-sample-network:
