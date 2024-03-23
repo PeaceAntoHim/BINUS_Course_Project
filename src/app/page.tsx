@@ -10,6 +10,9 @@ export default function Home() {
           <Link href="assets/">All Course Computer Science</Link>
         </li>
         <li>
+          <Link href="https://excalidraw.com/#json=kstIulQQlbRX45mKsBgdK,caSm8WCnp2LqukrHfsrtHA">Software Design Pattern</Link>
+        </li>
+        <li>
           <Link href="assets/Algoritma_design_Analysis">
             Artificial_Intelligence
           </Link>{" "}
