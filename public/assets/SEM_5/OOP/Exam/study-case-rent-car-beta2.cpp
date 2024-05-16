@@ -5,7 +5,7 @@
 #include <memory>
 using namespace std;
 
-// Interface for car properties and availability
+// Interface untuk properti mobil dan ketersediaan
 class ICarProperties
 {
 public:
@@ -17,7 +17,7 @@ public:
   virtual ~ICarProperties() = default;
 };
 
-// Interface for calculating rental cost
+// Interface untuk menghitung biaya sewa
 class IRentalCost
 {
 public:
@@ -25,7 +25,7 @@ public:
   virtual ~IRentalCost() = default;
 };
 
-// Single Responsibility: Car class handles car properties and calculations
+// Single Responsibility: Kelas mobil mengurus properti dan perhitungan mobil
 class Car : public ICarProperties, public IRentalCost
 {
 protected:
@@ -42,7 +42,7 @@ public:
   double getDailyRate() const override { return dailyRate; }
   bool getAvailability() const override { return isAvailable; }
   void setAvailability(bool status) override { isAvailable = status; }
-  virtual ~Car() = default; // Open/Closed: Car class is open for extension but closed for modification
+  virtual ~Car() = default; // Open/Closed: Kelas mobil terbuka untuk ekstensi tetapi tertutup untuk modifikasi
 };
 
 class Sedan : public Car
@@ -61,7 +61,7 @@ public:
   SUV(string n, int y, double d) : Car(n, y, d) {}
   double calculateTotalCost(int days) const override
   {
-    return dailyRate * days * 1.2; // 20% extra for SUVs
+    return dailyRate * days * 1.2; // 20% ekstra untuk SUV
   }
 };
 
@@ -71,7 +71,7 @@ public:
   Minivan(string n, int y, double d) : Car(n, y, d) {}
   double calculateTotalCost(int days) const override
   {
-    return dailyRate * days * 1.1; // 10% extra for Minivans
+    return dailyRate * days * 1.1; // 10% ekstra untuk Minivan
   }
 };
 
@@ -133,17 +133,30 @@ public:
   void saveCarsToFile(const string &filename) const override
   {
     ofstream file(filename);
+    if (!file.is_open())
+    {
+      cout << "Error opening file for writing: " << filename << endl;
+      return;
+    }
+
     for (const auto &car : cars)
     {
       file << car->getName() << " " << car->getYear() << " "
            << car->getDailyRate() << " " << car->getAvailability() << endl;
     }
-    file.close();
+    file.close();                                            // Pastikan file ditutup setelah penulisan selesai
+    cout << "File saved successfully: " << filename << endl; // Tambahkan pesan konfirmasi
   }
 
   void loadCarsFromFile(const string &filename) override
   {
     ifstream file(filename);
+    if (!file.is_open())
+    {
+      cout << "Error opening file for reading: " << filename << endl;
+      return;
+    }
+
     string name;
     int year;
     double rate;
@@ -191,7 +204,7 @@ public:
       cout << "Customer: " << transaction.customerName
            << ", Car: " << transaction.rentedCar->getName()
            << ", Duration: " << transaction.rentalDuration
-           << " days, Total Cost: Rp." << transaction.totalCost << endl;
+           << " days, Total Cost: $" << transaction.totalCost << endl;
     }
     cout << "********** End Display Transactions **********" << endl;
   }
@@ -261,14 +274,14 @@ public:
     if (car)
     {
       cout << "********** Start Display Car **********" << endl;
-      cout << "Car Found: " << car->getName() << ", Year: "
-           << car->getYear() << ", Daily Rate: Rp." << car->getDailyRate()
+      cout << "Car found: " << car->getName() << ", Year: " << car->getYear()
+           << ", Daily Rate: $" << car->getDailyRate()
            << ", Available: " << (car->getAvailability() ? "Yes" : "No") << endl;
       cout << "********** End Display Car **********" << endl;
     }
     else
     {
-      cout << "Car not found." << endl;
+      cout << "Car not found or not available." << endl;
     }
   }
 
@@ -294,7 +307,7 @@ public:
     for (const auto &car : cars)
     {
       cout << "Car: " << car->getName() << ", Year: " << car->getYear()
-           << ", Daily Rate: Rp." << car->getDailyRate()
+           << ", Daily Rate: $" << car->getDailyRate()
            << ", Available: " << (car->getAvailability() ? "Yes" : "No") << endl;
     }
     cout << "********** End Display Cars **********" << endl;
@@ -326,6 +339,7 @@ void displayMenu()
   cout << "\n"
        << endl;
 }
+
 int main()
 {
   auto carRepository = make_shared<CarRepository>();
@@ -413,13 +427,13 @@ int main()
       string filename = "mobil.txt";
       rentalSystem->saveCarsToFile(filename);
       break;
-    case 9:
     }
-      {
-        string filename = "mobil.txt";
-        rentalSystem->loadCarsFromFile(filename);
-        break;
-      }
+    case 9:
+    {
+      string filename = "mobil.txt";
+      rentalSystem->loadCarsFromFile(filename);
+      break;
+    }
     default:
     {
       cout << "Invalid choice, please try again." << endl;
