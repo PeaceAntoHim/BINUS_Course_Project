@@ -204,7 +204,7 @@ public:
       cout << "Customer: " << transaction.customerName
            << ", Car: " << transaction.rentedCar->getName()
            << ", Duration: " << transaction.rentalDuration
-           << " days, Total Cost: $" << transaction.totalCost << endl;
+           << " days, Total Cost: Rp. " << transaction.totalCost << endl;
     }
     cout << "********** End Display Transactions **********" << endl;
   }
@@ -275,7 +275,7 @@ public:
     {
       cout << "********** Start Display Car **********" << endl;
       cout << "Car found: " << car->getName() << ", Year: " << car->getYear()
-           << ", Daily Rate: $" << car->getDailyRate()
+           << ", Daily Rate: Rp. " << car->getDailyRate()
            << ", Available: " << (car->getAvailability() ? "Yes" : "No") << endl;
       cout << "********** End Display Car **********" << endl;
     }
@@ -307,7 +307,7 @@ public:
     for (const auto &car : cars)
     {
       cout << "Car: " << car->getName() << ", Year: " << car->getYear()
-           << ", Daily Rate: $" << car->getDailyRate()
+           << ", Daily Rate: Rp. " << car->getDailyRate()
            << ", Available: " << (car->getAvailability() ? "Yes" : "No") << endl;
     }
     cout << "********** End Display Cars **********" << endl;

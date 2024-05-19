@@ -191,7 +191,7 @@ public:
       cout << "Customer: " << transaction.customerName
            << ", Car: " << transaction.rentedCar->getName()
            << ", Duration: " << transaction.rentalDuration
-           << " days, Total Cost: Rp." << transaction.totalCost << endl;
+           << " days, Total Cost: " << transaction.totalCost << endl;
     }
     cout << "********** End Display Transactions **********" << endl;
   }
