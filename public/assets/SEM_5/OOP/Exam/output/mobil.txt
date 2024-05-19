@@ -1,0 +1,4 @@
+Name | Year | Price | Availability
+Avanza | 2011 | 120000 | No
+HRV | 2018 | 200000 | Yes
+Panther | 1999 | 120000 | Yes
