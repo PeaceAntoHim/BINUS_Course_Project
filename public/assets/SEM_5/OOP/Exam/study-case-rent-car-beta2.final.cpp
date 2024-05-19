@@ -98,7 +98,6 @@ public:
   virtual shared_ptr<Car> findCarByName(const string &name) const = 0;
   virtual vector<shared_ptr<Car>> getCars() const = 0;
   virtual void saveCarsToFile(const string &filename) const = 0;
-  virtual void loadCarsFromFile(const string &filename) = 0;
   virtual ~ICarRepository() = default;
 };
 
@@ -139,41 +138,18 @@ public:
       return;
     }
 
+    // Tulis header ke file
+    file << "Name | Year | Price | Availability" << endl;
+
+    // Tulis data mobil
     for (const auto &car : cars)
     {
-      file << car->getName() << " " << car->getYear() << " "
-           << car->getDailyRate() << " " << car->getAvailability() << endl;
+      string availability = car->getAvailability() ? "Yes" : "No";
+      file << car->getName() << " | " << car->getYear() << " | "
+           << car->getDailyRate() << " | " << availability << endl;
     }
     file.close();                                            // Pastikan file ditutup setelah penulisan selesai
     cout << "File saved successfully: " << filename << endl; // Tambahkan pesan konfirmasi
-  }
-
-  void loadCarsFromFile(const string &filename) override
-  {
-    ifstream file(filename);
-    if (!file.is_open())
-    {
-      cout << "Error opening file for reading: " << filename << endl;
-      return;
-    }
-
-    string name;
-    int year;
-    double rate;
-    bool availability;
-    while (file >> name >> year >> rate >> availability)
-    {
-      shared_ptr<Car> car;
-      if (name.find("Sedan") != string::npos)
-        car = make_shared<Sedan>(name, year, rate);
-      else if (name.find("SUV") != string::npos)
-        car = make_shared<SUV>(name, year, rate);
-      else
-        car = make_shared<Minivan>(name, year, rate);
-      car->setAvailability(availability);
-      cars.push_back(car);
-    }
-    file.close();
   }
 };
 
@@ -217,7 +193,6 @@ public:
   virtual void addTransaction(const string &customerName, const string &carName, int days) = 0;
   virtual void displayTransactions() const = 0;
   virtual void saveCarsToFile(const string &filename) const = 0;
-  virtual void loadCarsFromFile(const string &filename) = 0;
   virtual void searchCarByName(const string &name) const = 0;
   virtual void sortCarsByName() = 0;
   virtual void sortCarsByYear() = 0;
@@ -246,6 +221,7 @@ public:
     if (car)
     {
       transactionManager->addTransaction(customerName, car, days);
+      cout << "Success full added new transaction" << endl;
     }
     else
     {
@@ -261,11 +237,6 @@ public:
   void saveCarsToFile(const string &filename) const override
   {
     carRepository->saveCarsToFile(filename);
-  }
-
-  void loadCarsFromFile(const string &filename) override
-  {
-    carRepository->loadCarsFromFile(filename);
   }
 
   void searchCarByName(const string &name) const override
@@ -333,7 +304,6 @@ void displayMenu()
   cout << "6. Sort Cars by Year" << endl;
   cout << "7. Display Cars" << endl;
   cout << "8. Save Cars to File" << endl;
-  cout << "9. Load Cars from File" << endl;
   cout << "0. Exit" << endl;
   cout << "********** End Display Menu **********" << endl;
   cout << "\n"
@@ -379,6 +349,8 @@ int main()
       else
         car = make_shared<Minivan>(name, year, rate);
       rentalSystem->addCar(car);
+      cout << "Success full added new car: " << name << endl;
+
       break;
     }
     case 2:
@@ -392,6 +364,7 @@ int main()
       cout << "Enter rental duration (days): ";
       cin >> days;
       rentalSystem->addTransaction(customerName, carName, days);
+
       break;
     }
     case 3:
@@ -426,12 +399,6 @@ int main()
     {
       string filename = "mobil.txt";
       rentalSystem->saveCarsToFile(filename);
-      break;
-    }
-    case 9:
-    {
-      string filename = "mobil.txt";
-      rentalSystem->loadCarsFromFile(filename);
       break;
     }
     default:
