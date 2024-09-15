@@ -7,7 +7,7 @@ themeToggle.addEventListener("click", () => {
 
   if (currentTheme === "dark") {
     document.body.removeAttribute("data-theme");
-    themeToggle.textContent = "Switch to Nigth Theme";
+    themeToggle.textContent = "Switch to Night Theme";
   } else {
     document.body.setAttribute("data-theme", "dark");
     themeToggle.textContent = "Switch to Light Theme";
