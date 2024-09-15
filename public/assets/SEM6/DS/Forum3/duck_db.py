@@ -15,3 +15,4 @@ result = duckdb.query(query).df()
 
 # Menampilkan hasil
 print(result)
+

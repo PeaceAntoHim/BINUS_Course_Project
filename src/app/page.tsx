@@ -5,12 +5,15 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1>Algorithm Repositories</h1>
+
       <ul>
         <li>
           <Link href="assets/">All Course Computer Science</Link>
         </li>
         <li>
-          <Link href="https://excalidraw.com/#json=kstIulQQlbRX45mKsBgdK,caSm8WCnp2LqukrHfsrtHA">Software Design Pattern</Link>
+          <Link href="https://excalidraw.com/#json=kstIulQQlbRX45mKsBgdK,caSm8WCnp2LqukrHfsrtHA">
+            Software Design Pattern
+          </Link>
         </li>
         <li>
           <Link href="assets/Algoritma_design_Analysis">
