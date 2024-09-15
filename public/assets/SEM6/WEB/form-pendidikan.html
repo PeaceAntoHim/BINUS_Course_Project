@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pendaftaran Mahasiswa Baru</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px 40px 40px 40px;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Form Pendaftaran Mahasiswa Baru</h2>
+    <form>
+        <!-- Nama Lengkap -->
+        <label for="nama">Nama Lengkap:</label>
+        <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+        <!-- NIM -->
+        <label for="nim">NIM:</label>
+        <input type="text" id="nim" name="nim" placeholder="Masukkan NIM" required>
+        <!-- Email -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Masukkan email" required>
+        <!-- Tanggal Lahir -->
+        <label for="tanggal_lahir">Tanggal Lahir:</label>
+        <input type="date" id="tanggal_lahir" name="tanggal_lahir" required>
+        <!-- Jenis Kelamin -->
+        <label for="jenis_kelamin">Jenis Kelamin:</label>
+        <select id="jenis_kelamin" name="jenis_kelamin" required>
+            <option value="">--Pilih Jenis Kelamin--</option>
+            <option value="laki-laki">Laki-laki</option>
+            <option value="perempuan">Perempuan</option>
+        </select>
+        <!-- Program Studi -->
+        <label for="program_studi">Program Studi:</label>
+        <select id="program_studi" name="program_studi" required>
+            <option value="">--Pilih Program Studi--</option>
+            <option value="informatika">Informatika</option>
+            <option value="sistem_informasi">Sistem Informasi</option>
+            <option value="teknik_komputer">Teknik Komputer</option>
+            <option value="teknik_informatika">Teknik Informatika</option>
+        </select>
+        <!-- Alamat -->
+        <label for="alamat">Alamat:</label>
+        <input type="text" id="alamat" name="alamat" placeholder="Masukkan alamat lengkap" required>
+        <!-- Submit Button -->
+        <input type="submit" value="Daftar">
+    </form>
+</div>
+</body>
+</html>
